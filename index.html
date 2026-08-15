@@ -40,7 +40,7 @@
 				background: var(--paper);
 				color: var(--ink);
 				font-family: var(--font);
-				font-weight: 300;
+				font-weight: 400;
 				line-height: 1.6;
 				-webkit-font-smoothing: antialiased;
 			}
@@ -87,13 +87,13 @@
 			}
 
 			.logo {
-				height: 42px;
+				height: 84px;
 				width: auto;
 			}
 
 			@media (min-width: 720px) {
 				.logo {
-					height: 58px;
+					height: 116px;
 				}
 			}
 
@@ -189,7 +189,7 @@
 
 			.hero .support {
 				font-size: 1.02rem;
-				font-weight: 300;
+				font-weight: 400;
 				margin-bottom: 26px;
 				max-width: 56ch;
 				color: var(--muted);
@@ -278,23 +278,6 @@
 
 			.social-proof img {
 				margin: 0 auto;
-			}
-
-			/* ---------- Difference ---------- */
-
-			.difference h2 {
-				font-weight: 900;
-				font-size: clamp(1.5rem, 4.5vw, 2rem);
-				margin-bottom: 20px;
-			}
-
-			.difference p {
-				font-size: 1.02rem;
-				margin-bottom: 16px;
-			}
-
-			.difference p:last-child {
-				margin-bottom: 0;
 			}
 
 			/* ---------- What you get ---------- */
@@ -452,6 +435,16 @@
 				margin-bottom: 0;
 			}
 
+			.signature {
+				margin-top: 22px;
+				padding-top: 16px;
+				border-top: 1px solid var(--border);
+				font-weight: 700;
+				font-style: italic;
+				letter-spacing: 0.03em;
+				color: var(--ink);
+			}
+
 			/* ---------- Final CTA ---------- */
 
 			.final-cta {
@@ -559,7 +552,7 @@
 
 			.field-hint {
 				font-size: 0.8rem;
-				font-weight: 300;
+				font-weight: 400;
 				color: var(--muted);
 				margin: -2px 0 8px;
 			}
@@ -662,7 +655,7 @@
 			}
 
 			.loading .sub {
-				font-weight: 300;
+				font-weight: 400;
 				font-size: 0.9rem;
 				color: var(--muted);
 				margin-top: 8px;
@@ -721,6 +714,11 @@
 			.closing-block .weeks {
 				color: var(--accent);
 				font-weight: 700;
+			}
+
+			.closing-block .signature {
+				border-top-color: rgba(250, 250, 248, 0.2);
+				color: var(--paper);
 			}
 
 			.closing-cta {
@@ -796,23 +794,8 @@
 
 			<section class="social-proof">
 				<div class="wrap">
-					<p class="eyebrow">Más de 60 marcas escaladas con este sistema</p>
+					<p class="eyebrow">Más de 60 marcas han crecido con este sistema</p>
 					<img src="assets/social-proof.png" alt="Cinco estrellas y logos de marcas que ya trabajaron con Loops" />
-				</div>
-			</section>
-
-			<section class="difference">
-				<div class="wrap">
-					<h2>Esto no mira tu web. Mira tus números.</h2>
-					<p>
-						La mayoría de los diagnósticos gratis abren tu tienda, la miran por fuera y te dicen que cambies un
-						botón.
-					</p>
-					<p>
-						Este parte de tu facturación, tu conversión, tu ticket promedio y tu costo de adquisición. Es la
-						diferencia entre una opinión sobre tu vitrina y un diagnóstico hecho con tu contabilidad en la mano.
-					</p>
-					<p>Por eso el plan que sale te dice qué mover primero, y cuánto tiene que moverse para que llegues al triple.</p>
 				</div>
 			</section>
 
@@ -919,6 +902,7 @@
 						proveedores, de campañas y de despachos que tienes tú.
 					</p>
 					<p>Por eso armé un programa hecho por fundadores que operan sus propias marcas, para fundadores como tú.</p>
+					<p class="signature">Fauadz Kassen</p>
 				</div>
 			</section>
 
@@ -1036,7 +1020,8 @@
 							<p class="field-error" id="cac-error"></p>
 						</div>
 						<div class="field">
-							<label for="margin">Margen promedio de producto (%)</label>
+							<label for="margin">Margen Bruto (%)</label>
+							<p class="field-hint">El porcentaje que queda después de restarle el costo de tu producto al precio.</p>
 							<input id="margin" name="margin" type="number" min="0" step="0.01" />
 							<p class="field-error" id="margin-error"></p>
 						</div>
@@ -1480,6 +1465,14 @@
 					.filter(Boolean)
 					.forEach((parrafo) => {
 						const p = document.createElement('p');
+						// La firma ("Atte: ...") es texto fijo, siempre la ultima linea, se marca
+						// para que se vea como firma y no como un parrafo mas.
+						if (parrafo.startsWith('Atte:')) {
+							p.className = 'signature';
+							p.textContent = parrafo;
+							closingEl.appendChild(p);
+							return;
+						}
 						// Resalta el rango de semanas (el único número clave que controlamos nosotros
 						// en este texto, todo lo demás es literal fijo).
 						const match = parrafo.match(/^(El plan que acabas de leer requiere entre )(\d+ y \d+)( semanas.*)$/);
@@ -1498,8 +1491,9 @@
 
 				const cta = document.createElement('a');
 				cta.className = 'closing-cta';
-				// TODO: reemplazar por la URL real de agendamiento (Calendly, GHL, etc).
-				cta.href = 'TODO_URL_AGENDAR_LLAMADA';
+				cta.href = 'https://links.jaquefunnels.com/widget/booking/8RASvtZb30E9PjHapGkq';
+				cta.target = '_blank';
+				cta.rel = 'noopener noreferrer';
 				cta.textContent = 'Agenda tu llamada de claridad';
 				closingEl.appendChild(cta);
 
