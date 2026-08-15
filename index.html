@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Growth Advisor. Tu plan para triplicar ventas</title>
+		<meta name="description" content="Recibe un plan de accion completo para triplicar tus ventas, generado con los numeros reales de tu negocio." />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+		<style>
+			:root {
+				--espresso: #17130f;
+				--paper: #f7f3ec;
+				--cobalt: #1f3fe0;
+				--amber: #d8962f;
+				--font-sans: 'Archivo', sans-serif;
+				--font-serif: 'Newsreader', serif;
+				--font-mono: 'Space Mono', monospace;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				background: var(--paper);
+				color: var(--espresso);
+				font-family: var(--font-sans);
+				line-height: 1.5;
+				-webkit-font-smoothing: antialiased;
+			}
+
+			.page {
+				max-width: 640px;
+				margin: 0 auto;
+				padding: 24px 20px 64px;
+			}
+
+			header.hero {
+				padding: 32px 0 24px;
+				text-align: left;
+			}
+
+			.eyebrow {
+				font-family: var(--font-mono);
+				font-size: 0.8rem;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				color: var(--cobalt);
+				margin: 0 0 12px;
+			}
+
+			h1 {
+				font-family: var(--font-serif);
+				font-weight: 600;
+				font-size: clamp(1.75rem, 6vw, 2.5rem);
+				line-height: 1.15;
+				margin: 0 0 16px;
+			}
+
+			.hero p {
+				font-size: 1.05rem;
+				margin: 0;
+				max-width: 52ch;
+			}
+
+			form {
+				background: #ffffff;
+				border: 1px solid rgba(23, 19, 15, 0.12);
+				border-radius: 16px;
+				padding: 20px;
+				margin-top: 24px;
+			}
+
+			fieldset {
+				border: none;
+				padding: 0;
+				margin: 0 0 24px;
+			}
+
+			fieldset:last-of-type {
+				margin-bottom: 0;
+			}
+
+			legend {
+				font-family: var(--font-mono);
+				font-size: 0.8rem;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				color: var(--espresso);
+				opacity: 0.6;
+				padding: 0 0 12px;
+			}
+
+			.field {
+				margin-bottom: 14px;
+			}
+
+			label {
+				display: block;
+				font-size: 0.9rem;
+				font-weight: 600;
+				margin-bottom: 6px;
+			}
+
+			.field-hint {
+				font-size: 0.8rem;
+				opacity: 0.65;
+				margin: -2px 0 8px;
+			}
+
+			input,
+			select {
+				width: 100%;
+				font-family: var(--font-sans);
+				font-size: 1rem;
+				padding: 12px 14px;
+				border: 1px solid rgba(23, 19, 15, 0.25);
+				border-radius: 10px;
+				background: var(--paper);
+				color: var(--espresso);
+			}
+
+			input:focus,
+			select:focus {
+				outline: 2px solid var(--cobalt);
+				outline-offset: 1px;
+			}
+
+			.checkbox-row {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+			}
+
+			.checkbox-row input {
+				width: auto;
+			}
+
+			.checkbox-row label {
+				margin: 0;
+			}
+
+			.turnstile-slot {
+				margin: 20px 0;
+			}
+
+			button.submit {
+				width: 100%;
+				background: var(--cobalt);
+				color: var(--paper);
+				font-family: var(--font-sans);
+				font-weight: 700;
+				font-size: 1.05rem;
+				border: none;
+				border-radius: 12px;
+				padding: 16px;
+				cursor: pointer;
+			}
+
+			button.submit:disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+			}
+
+			.form-error {
+				color: #a4331b;
+				font-size: 0.9rem;
+				margin-top: 12px;
+				display: none;
+			}
+
+			.form-error.visible {
+				display: block;
+			}
+
+			.state {
+				display: none;
+			}
+
+			.state.visible {
+				display: block;
+			}
+
+			.loading {
+				text-align: center;
+				padding: 64px 20px;
+			}
+
+			.spinner {
+				width: 44px;
+				height: 44px;
+				border: 4px solid rgba(31, 63, 224, 0.15);
+				border-top-color: var(--cobalt);
+				border-radius: 50%;
+				margin: 0 auto 20px;
+				animation: spin 0.9s linear infinite;
+			}
+
+			@keyframes spin {
+				to {
+					transform: rotate(360deg);
+				}
+			}
+
+			.loading p {
+				font-family: var(--font-serif);
+				font-size: 1.15rem;
+			}
+
+			.loading .sub {
+				font-family: var(--font-sans);
+				font-size: 0.9rem;
+				opacity: 0.7;
+			}
+
+			.report {
+				margin-top: 8px;
+			}
+
+			.report-block {
+				background: #ffffff;
+				border: 1px solid rgba(23, 19, 15, 0.12);
+				border-radius: 16px;
+				padding: 20px;
+				margin-bottom: 16px;
+			}
+
+			.report-block h2 {
+				font-family: var(--font-mono);
+				font-size: 0.78rem;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				color: var(--cobalt);
+				margin: 0 0 10px;
+			}
+
+			.report-block p {
+				margin: 0;
+				white-space: pre-line;
+			}
+
+			.closing {
+				background: var(--espresso);
+				color: var(--paper);
+				border-radius: 16px;
+				padding: 24px 20px;
+				margin-top: 8px;
+			}
+
+			.closing p {
+				margin: 0 0 16px;
+			}
+
+			.closing p:last-of-type {
+				margin-bottom: 0;
+			}
+
+			.cta {
+				display: block;
+				text-align: center;
+				background: var(--amber);
+				color: var(--espresso);
+				font-weight: 700;
+				text-decoration: none;
+				border-radius: 12px;
+				padding: 16px;
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="page">
+			<header class="hero">
+				<p class="eyebrow">Growth Advisor</p>
+				<!-- TODO: copy definitivo del titular y la bajada los entrega Fauadz aparte (seccion 6 del brief). -->
+				<h1>Tu plan para triplicar ventas, con tus propios numeros</h1>
+				<p>
+					Llena el formulario con los datos reales de tu negocio y recibe en pantalla un plan de accion completo,
+					generado especificamente para ti.
+				</p>
+			</header>
+
+			<section id="state-form" class="state visible">
+				<form id="lead-form" novalidate>
+					<fieldset>
+						<legend>Contacto</legend>
+						<div class="field">
+							<label for="nombre">Nombre</label>
+							<input id="nombre" name="nombre" type="text" autocomplete="name" required />
+						</div>
+						<div class="field">
+							<label for="correo">Correo</label>
+							<input id="correo" name="correo" type="email" autocomplete="email" required />
+						</div>
+						<div class="field">
+							<label for="whatsapp">WhatsApp</label>
+							<input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" placeholder="+51999999999" required />
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend>Tu pais</legend>
+						<div class="field">
+							<label for="pais">Donde opera tu negocio</label>
+							<p class="field-hint">Esto define en que moneda vas a escribir los numeros de abajo.</p>
+							<select id="pais" name="pais" required>
+								<option value="CLP">Chile (CLP)</option>
+								<option value="MXN">Mexico (MXN)</option>
+								<option value="COP">Colombia (COP)</option>
+								<option value="PEN">Peru (PEN)</option>
+								<option value="ARS">Argentina (ARS)</option>
+								<option value="USD">Estados Unidos (USD)</option>
+								<option value="USD">Ecuador (USD)</option>
+								<option value="USD">Otro pais (USD)</option>
+							</select>
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend>Tus numeros de hoy</legend>
+						<div class="field">
+							<label for="currentRevenue" data-label-base="Facturacion mensual sin impuestos">Facturacion mensual sin impuestos</label>
+							<p class="field-hint">
+								Ventas netas, no el total con IVA. En Shopify es el numero de "Ventas netas", no el de "Ventas totales".
+							</p>
+							<input id="currentRevenue" name="currentRevenue" type="number" min="0" step="1" required />
+						</div>
+						<div class="field">
+							<label for="targetRevenue" data-label-base="Meta de facturacion deseada">Meta de facturacion deseada</label>
+							<input id="targetRevenue" name="targetRevenue" type="number" min="0" step="1" required />
+						</div>
+						<div class="field">
+							<label for="monthlySessions">Sesiones mensuales de tu tienda</label>
+							<input id="monthlySessions" name="monthlySessions" type="number" min="0" step="1" required />
+						</div>
+						<div class="field">
+							<label for="conversionRate">Tasa de conversion actual (%)</label>
+							<input id="conversionRate" name="conversionRate" type="number" min="0" step="0.01" required />
+						</div>
+						<div class="field">
+							<label for="aov" data-label-base="Ticket promedio, AOV">Ticket promedio, AOV</label>
+							<input id="aov" name="aov" type="number" min="0" step="0.01" required />
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend>Adquisicion y margen</legend>
+						<div class="field">
+							<label for="roas">ROAS actual</label>
+							<input id="roas" name="roas" type="number" min="0" step="0.01" required />
+						</div>
+						<div class="field">
+							<label for="cac" data-label-base="CAC promedio">CAC promedio</label>
+							<input id="cac" name="cac" type="number" min="0" step="0.01" required />
+						</div>
+						<div class="field">
+							<label for="margin">Margen promedio de producto (%)</label>
+							<input id="margin" name="margin" type="number" min="0" step="0.01" required />
+						</div>
+						<div class="field">
+							<label for="productType">Tipo de producto</label>
+							<select id="productType" name="productType" required>
+								<option value="">Selecciona una opcion</option>
+								<option value="consumible">Consumible</option>
+								<option value="duradero">Duradero</option>
+								<option value="moda">Moda o accesorios</option>
+								<option value="otro">Otro</option>
+							</select>
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend>Retencion y canales</legend>
+						<div class="field checkbox-row">
+							<input id="emailMarketing" name="emailMarketing" type="checkbox" />
+							<label for="emailMarketing">Tengo Email Marketing activo</label>
+						</div>
+						<div class="field checkbox-row">
+							<input id="whatsappMarketing" name="whatsappMarketing" type="checkbox" />
+							<label for="whatsappMarketing">Tengo WhatsApp Marketing activo</label>
+						</div>
+						<div class="field">
+							<label for="repurchaseFrequency">Frecuencia de recompra estimada</label>
+							<select id="repurchaseFrequency" name="repurchaseFrequency" required>
+								<option value="">Selecciona una opcion</option>
+								<option value="baja">Baja</option>
+								<option value="media">Media</option>
+								<option value="alta">Alta</option>
+							</select>
+						</div>
+						<div class="field">
+							<label for="returningCustomerRate">Tasa de clientes habituales (%)</label>
+							<input id="returningCustomerRate" name="returningCustomerRate" type="number" min="0" step="0.01" required />
+						</div>
+						<div class="field">
+							<label for="adsExperience">Tu nivel de experiencia con Ads</label>
+							<select id="adsExperience" name="adsExperience" required>
+								<option value="">Selecciona una opcion</option>
+								<option value="principiante">Principiante</option>
+								<option value="intermedio">Intermedio</option>
+								<option value="avanzado">Avanzado</option>
+							</select>
+						</div>
+					</fieldset>
+
+					<div class="turnstile-slot">
+						<div class="cf-turnstile" data-sitekey="0x4AAAAAAEQcv8j3XyKadRML"></div>
+					</div>
+
+					<button class="submit" type="submit">Genera mi plan de crecimiento</button>
+					<p class="form-error" id="form-error"></p>
+				</form>
+			</section>
+
+			<section id="state-loading" class="state loading">
+				<div class="spinner"></div>
+				<p>Estamos generando tu plan de crecimiento.</p>
+				<p class="sub">Esto puede tardar un minuto. No cierres esta pantalla.</p>
+			</section>
+
+			<section id="state-result" class="state">
+				<div class="report" id="report-blocks"></div>
+				<div class="closing" id="closing-block"></div>
+			</section>
+		</div>
+
+		<script>
+			// La pagina vive en GitHub Pages (plan.marcasrentables.com), el worker vive en Cloudflare.
+			// No son el mismo origen, por eso la URL completa en vez de una ruta relativa.
+			const API_URL = 'https://growth-advisor-publico.fauadzkassen.workers.dev/analizar';
+
+			// TODO: reemplazar por el Pixel ID real de Meta antes de lanzar la campana (paso 6 del brief).
+			const META_PIXEL_ID = 'TODO_META_PIXEL_ID';
+			!(function (f, b, e, v, n, t, s) {
+				if (f.fbq) return;
+				n = f.fbq = function () {
+					n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+				};
+				if (!f._fbq) f._fbq = n;
+				n.push = n;
+				n.loaded = !0;
+				n.version = '2.0';
+				n.queue = [];
+				t = b.createElement(e);
+				t.async = !0;
+				t.src = v;
+				s = b.getElementsByTagName(e)[0];
+				s.parentNode.insertBefore(t, s);
+			})(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+			fbq('init', META_PIXEL_ID);
+			fbq('track', 'PageView');
+
+			const REPORT_LABELS = {
+				diagnosticoGeneral: 'Diagnostico general',
+				tusNumerosHoy: 'Tus numeros hoy',
+				tuCuelloBotella: 'Tu cuello de botella',
+				tuCaminoHacia3X: 'Tu camino hacia el 3X',
+				queDebesHacerEstaSemana: 'Que debes hacer esta semana',
+				riesgosSiNoActuas: 'Riesgos si no actuas',
+				mensajeFinalMentor: 'Mensaje final del mentor',
+			};
+
+			const CURRENCY_SYMBOLS = {
+				CLP: '$ CLP',
+				MXN: '$ MXN',
+				COP: '$ COP',
+				PEN: 'S/ PEN',
+				ARS: '$ ARS',
+				USD: '$ USD',
+			};
+
+			const form = document.getElementById('lead-form');
+			const stateForm = document.getElementById('state-form');
+			const stateLoading = document.getElementById('state-loading');
+			const stateResult = document.getElementById('state-result');
+			const formError = document.getElementById('form-error');
+			const paisSelect = document.getElementById('pais');
+			const currencyLabels = document.querySelectorAll('[data-label-base]');
+
+			function updateCurrencyLabels() {
+				const simbolo = CURRENCY_SYMBOLS[paisSelect.value] || CURRENCY_SYMBOLS.USD;
+				currencyLabels.forEach((label) => {
+					label.textContent = `${label.dataset.labelBase} (${simbolo})`;
+				});
+			}
+
+			paisSelect.addEventListener('change', updateCurrencyLabels);
+			updateCurrencyLabels();
+
+			function showState(state) {
+				[stateForm, stateLoading, stateResult].forEach((el) => el.classList.remove('visible'));
+				state.classList.add('visible');
+			}
+
+			function setFormError(message) {
+				formError.textContent = message;
+				formError.classList.toggle('visible', Boolean(message));
+			}
+
+			function renderReport(analysis, closing, moneda, tipoCambio) {
+				const reportEl = document.getElementById('report-blocks');
+				reportEl.innerHTML = '';
+
+				if (moneda !== 'USD') {
+					// TODO: el diagnostico principal (analysis) todavia sale en USD, no en la
+					// moneda local. Nota provisional mientras se define la solucion (ver chat).
+					const nota = document.createElement('p');
+					nota.className = 'field-hint';
+					nota.style.marginBottom = '16px';
+					nota.textContent = 'El diagnostico de abajo hace sus calculos en USD para estandarizar la metodologia. El cierre y el CTA si estan en tu moneda.';
+					reportEl.appendChild(nota);
+				}
+
+				Object.entries(REPORT_LABELS).forEach(([key, label]) => {
+					if (!analysis[key]) return;
+					const block = document.createElement('div');
+					block.className = 'report-block';
+					const h2 = document.createElement('h2');
+					h2.textContent = label;
+					const p = document.createElement('p');
+					p.textContent = analysis[key];
+					block.appendChild(h2);
+					block.appendChild(p);
+					reportEl.appendChild(block);
+				});
+
+				const closingEl = document.getElementById('closing-block');
+				closingEl.innerHTML = '';
+
+				// El bloque de cierre llega como texto corrido (parte A generada + parte B fija),
+				// separado en parrafos por linea en blanco.
+				closing
+					.split(/\n\s*\n/)
+					.map((parrafo) => parrafo.trim())
+					.filter(Boolean)
+					.forEach((parrafo) => {
+						const p = document.createElement('p');
+						p.textContent = parrafo;
+						closingEl.appendChild(p);
+					});
+
+				const cta = document.createElement('a');
+				cta.className = 'cta';
+				// TODO: reemplazar por la URL real de agendamiento (Calendly, GHL, etc).
+				cta.href = 'TODO_URL_AGENDAR_LLAMADA';
+				cta.textContent = 'Agenda tu llamada de claridad';
+				closingEl.appendChild(cta);
+
+				if (tipoCambio && moneda !== 'USD') {
+					const fecha = new Date(tipoCambio.fetchedAt).toLocaleDateString('es-CL');
+					const fx = document.createElement('p');
+					fx.className = 'field-hint';
+					fx.style.marginTop = '16px';
+					fx.style.marginBottom = '0';
+					fx.textContent = `Tipo de cambio usado: 1 USD = ${tipoCambio.rate.toFixed(2)} ${moneda} (${fecha}).`;
+					closingEl.appendChild(fx);
+				}
+			}
+
+			form.addEventListener('submit', async (event) => {
+				event.preventDefault();
+				setFormError('');
+
+				const data = new FormData(form);
+				const turnstileToken = data.get('cf-turnstile-response');
+				if (!turnstileToken) {
+					setFormError('Completa la verificacion de seguridad antes de continuar.');
+					return;
+				}
+
+				const payload = {
+					nombre: data.get('nombre'),
+					correo: data.get('correo'),
+					whatsapp: data.get('whatsapp'),
+					turnstileToken,
+					moneda: data.get('pais'),
+					negocio: {
+						currentRevenue: Number(data.get('currentRevenue')),
+						targetRevenue: Number(data.get('targetRevenue')),
+						monthlySessions: Number(data.get('monthlySessions')),
+						conversionRate: Number(data.get('conversionRate')),
+						aov: Number(data.get('aov')),
+						roas: Number(data.get('roas')),
+						cac: Number(data.get('cac')),
+						margin: Number(data.get('margin')),
+						productType: data.get('productType'),
+						emailMarketing: data.get('emailMarketing') === 'on',
+						whatsappMarketing: data.get('whatsappMarketing') === 'on',
+						repurchaseFrequency: data.get('repurchaseFrequency'),
+						returningCustomerRate: Number(data.get('returningCustomerRate')),
+						adsExperience: data.get('adsExperience'),
+					},
+				};
+
+				showState(stateLoading);
+
+				try {
+					const response = await fetch(API_URL, {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify(payload),
+					});
+					const result = await response.json();
+
+					if (!response.ok) {
+						showState(stateForm);
+						setFormError(result.error || 'No pudimos generar tu plan. Intenta de nuevo.');
+						return;
+					}
+
+					fbq('track', 'Lead');
+					renderReport(result.analysis, result.closing, result.moneda, result.tipoCambio);
+					showState(stateResult);
+				} catch (err) {
+					showState(stateForm);
+					setFormError('No pudimos conectar con el servidor. Revisa tu conexion e intenta de nuevo.');
+				}
+			});
+		</script>
+	</body>
+</html>
