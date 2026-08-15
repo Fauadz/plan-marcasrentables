@@ -6,7 +6,7 @@
 		<title>Tu plan para triplicar ventas. Growth Advisor</title>
 		<meta
 			name="description"
-			content="En menos de 5 minutos vas a tener en pantalla el plan completo para triplicar tus ventas. Hecho con los numeros reales de tu tienda."
+			content="En menos de 5 minutos vas a tener en pantalla el plan completo para triplicar tus ventas. Hecho con los números reales de tu tienda."
 		/>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,7 +18,8 @@
 				--accent-dark: #1f8e8b;
 				--ink: #16181a;
 				--paper: #fafaf8;
-				--muted: #6b7075;
+				--muted: #4b4f53;
+				--muted-on-dark: rgba(250, 250, 248, 0.68);
 				--border: rgba(22, 24, 26, 0.12);
 				--danger: #b3312d;
 				--white: #ffffff;
@@ -62,31 +63,38 @@
 			}
 
 			.wrap {
-				max-width: 640px;
+				max-width: 720px;
 				margin: 0 auto;
 				padding: 0 20px;
 			}
 
 			.wrap-wide {
-				max-width: 900px;
+				max-width: 1100px;
 				margin: 0 auto;
 				padding: 0 20px;
 			}
 
-			/* ---------- Header ---------- */
+			/* ---------- Franja del logo ---------- */
 
-			.site-header {
-				padding: 20px 0;
+			.logo-strip {
+				background: var(--ink);
+				padding: 14px 0;
 			}
 
-			.site-header .wrap {
+			.logo-strip .wrap {
 				display: flex;
-				align-items: center;
+				justify-content: center;
 			}
 
 			.logo {
-				height: 36px;
+				height: 42px;
 				width: auto;
+			}
+
+			@media (min-width: 720px) {
+				.logo {
+					height: 58px;
+				}
 			}
 
 			/* ---------- Buttons ---------- */
@@ -101,14 +109,16 @@
 				color: var(--white);
 				border: none;
 				border-radius: 12px;
-				padding: 18px 28px;
+				padding: 17px 30px;
 				cursor: pointer;
 				text-decoration: none;
 				transition: background 0.15s ease;
 			}
 
-			.btn:hover {
+			.btn:hover,
+			.btn:focus-visible {
 				background: var(--accent-dark);
+				color: var(--white);
 			}
 
 			.btn:disabled {
@@ -121,15 +131,19 @@
 				width: 100%;
 			}
 
+			.btn-center {
+				text-align: center;
+			}
+
 			/* ---------- Section rhythm ---------- */
 
 			section {
-				padding: 56px 0;
+				padding: 40px 0;
 			}
 
 			@media (min-width: 720px) {
 				section {
-					padding: 88px 0;
+					padding: 64px 0;
 				}
 			}
 
@@ -145,41 +159,120 @@
 
 			/* ---------- Hero ---------- */
 
+			.hero-grid {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 8px;
+				align-items: center;
+			}
+
+			@media (min-width: 900px) {
+				.hero-grid {
+					grid-template-columns: 1.05fr 0.95fr;
+					gap: 48px;
+				}
+			}
+
 			.hero h1 {
 				font-weight: 900;
-				font-size: clamp(2rem, 7vw, 3.1rem);
+				font-size: clamp(2rem, 6.5vw, 2.9rem);
 				letter-spacing: -0.01em;
-				margin-bottom: 20px;
+				margin-bottom: 18px;
 			}
 
 			.hero .lead {
-				font-size: 1.15rem;
+				font-size: 1.1rem;
 				font-weight: 400;
-				margin-bottom: 16px;
+				margin-bottom: 14px;
 				max-width: 56ch;
 			}
 
 			.hero .support {
-				font-size: 1.05rem;
+				font-size: 1.02rem;
 				font-weight: 300;
-				margin-bottom: 32px;
+				margin-bottom: 26px;
 				max-width: 56ch;
 				color: var(--muted);
 			}
 
 			.hero .cta-sub {
-				margin-top: 12px;
+				margin-top: 10px;
 				font-size: 0.85rem;
 				color: var(--muted);
+			}
+
+			.hero-visual {
+				display: none;
+			}
+
+			@media (min-width: 900px) {
+				.hero-visual {
+					display: flex;
+					justify-content: center;
+				}
+			}
+
+			.preview-card {
+				background: var(--white);
+				border: 1px solid var(--border);
+				border-radius: 20px;
+				padding: 28px;
+				width: 100%;
+				max-width: 320px;
+				box-shadow: 0 24px 48px -24px rgba(22, 24, 26, 0.28);
+				transform: rotate(2deg);
+			}
+
+			.preview-eyebrow {
+				font-family: var(--font);
+				font-weight: 800;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				color: var(--accent);
+				font-size: 0.7rem;
+				margin: 0 0 10px;
+			}
+
+			.preview-number {
+				font-weight: 900;
+				font-size: 3.4rem;
+				color: var(--ink);
+				margin: 0 0 18px;
+				line-height: 1;
+			}
+
+			.preview-line {
+				height: 10px;
+				border-radius: 6px;
+				background: var(--border);
+				margin-bottom: 10px;
+			}
+
+			.preview-line.short {
+				width: 65%;
+				margin-bottom: 20px;
+			}
+
+			.preview-chip {
+				display: inline-block;
+				background: rgba(45, 179, 176, 0.12);
+				color: var(--accent-dark);
+				font-weight: 700;
+				font-size: 0.8rem;
+				border-radius: 8px;
+				padding: 8px 12px;
 			}
 
 			/* ---------- Social proof ---------- */
 
 			.social-proof {
+				background: var(--ink);
+				color: var(--white);
 				text-align: center;
 			}
 
 			.social-proof .eyebrow {
+				color: var(--white);
 				display: block;
 			}
 
@@ -191,13 +284,13 @@
 
 			.difference h2 {
 				font-weight: 900;
-				font-size: clamp(1.6rem, 5vw, 2.2rem);
-				margin-bottom: 24px;
+				font-size: clamp(1.5rem, 4.5vw, 2rem);
+				margin-bottom: 20px;
 			}
 
 			.difference p {
-				font-size: 1.05rem;
-				margin-bottom: 18px;
+				font-size: 1.02rem;
+				margin-bottom: 16px;
 			}
 
 			.difference p:last-child {
@@ -208,46 +301,52 @@
 
 			.what-you-get h2 {
 				font-weight: 900;
-				font-size: clamp(1.6rem, 5vw, 2.2rem);
-				margin-bottom: 36px;
+				font-size: clamp(1.5rem, 4.5vw, 2rem);
+				margin-bottom: 30px;
 			}
 
 			.what-grid {
 				display: grid;
 				grid-template-columns: 1fr;
-				gap: 28px;
+				gap: 24px;
 			}
 
 			@media (min-width: 720px) {
 				.what-grid {
 					grid-template-columns: 1fr 1fr;
-					gap: 40px 32px;
+					gap: 32px 28px;
+				}
+			}
+
+			@media (min-width: 980px) {
+				.what-grid {
+					grid-template-columns: repeat(3, 1fr);
 				}
 			}
 
 			.what-item h3 {
 				font-weight: 800;
-				font-size: 1.1rem;
+				font-size: 1.08rem;
 				margin-bottom: 8px;
 			}
 
 			.what-item p {
 				color: var(--muted);
-				font-size: 0.98rem;
+				font-size: 0.97rem;
 			}
 
 			/* ---------- Recognize ---------- */
 
 			.recognize h2 {
 				font-weight: 900;
-				font-size: clamp(1.6rem, 5vw, 2.2rem);
-				margin-bottom: 32px;
+				font-size: clamp(1.5rem, 4.5vw, 2rem);
+				margin-bottom: 26px;
 			}
 
 			.recognize-cards {
 				display: grid;
 				grid-template-columns: 1fr;
-				gap: 14px;
+				gap: 12px;
 			}
 
 			@media (min-width: 720px) {
@@ -260,14 +359,14 @@
 				background: var(--white);
 				border: 1px solid var(--border);
 				border-radius: 14px;
-				padding: 20px;
+				padding: 18px 20px;
 				font-weight: 700;
 				font-size: 1rem;
 			}
 
 			.recognize-closing {
-				margin-top: 28px;
-				font-size: 1.05rem;
+				margin-top: 22px;
+				font-size: 1.02rem;
 				font-weight: 400;
 			}
 
@@ -275,16 +374,27 @@
 
 			.testimonials h2 {
 				font-weight: 900;
-				font-size: clamp(1.6rem, 5vw, 2.2rem);
-				margin-bottom: 36px;
+				font-size: clamp(1.5rem, 4.5vw, 2rem);
+				margin-bottom: 30px;
 			}
 
 			.testimonial {
-				margin-bottom: 48px;
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 18px;
+				margin-bottom: 36px;
 			}
 
 			.testimonial:last-child {
 				margin-bottom: 0;
+			}
+
+			@media (min-width: 860px) {
+				.testimonial {
+					grid-template-columns: 1fr 1fr;
+					gap: 40px;
+					align-items: center;
+				}
 			}
 
 			.testimonial-video {
@@ -294,7 +404,6 @@
 				border-radius: 14px;
 				overflow: hidden;
 				background: var(--ink);
-				margin-bottom: 20px;
 			}
 
 			.testimonial-video iframe {
@@ -307,12 +416,12 @@
 
 			.testimonial h3 {
 				font-weight: 800;
-				font-size: 1.15rem;
-				margin-bottom: 12px;
+				font-size: 1.12rem;
+				margin-bottom: 10px;
 			}
 
 			.testimonial p {
-				font-size: 1rem;
+				font-size: 0.98rem;
 				margin-bottom: 12px;
 				color: var(--muted);
 			}
@@ -330,13 +439,13 @@
 
 			.founder h2 {
 				font-weight: 900;
-				font-size: clamp(1.6rem, 5vw, 2.2rem);
-				margin-bottom: 24px;
+				font-size: clamp(1.5rem, 4.5vw, 2rem);
+				margin-bottom: 20px;
 			}
 
 			.founder p {
-				font-size: 1.05rem;
-				margin-bottom: 16px;
+				font-size: 1.02rem;
+				margin-bottom: 14px;
 			}
 
 			.founder p:last-child {
@@ -353,8 +462,8 @@
 
 			.final-cta h2 {
 				font-weight: 900;
-				font-size: clamp(1.8rem, 6vw, 2.4rem);
-				margin-bottom: 28px;
+				font-size: clamp(1.7rem, 5.5vw, 2.2rem);
+				margin-bottom: 24px;
 			}
 
 			/* ---------- Modal ---------- */
@@ -412,7 +521,13 @@
 			.step-subtitle {
 				font-size: 0.95rem;
 				color: var(--muted);
-				margin-bottom: 24px;
+				margin-bottom: 6px;
+			}
+
+			.step-hint {
+				font-size: 0.8rem;
+				color: var(--muted);
+				margin-bottom: 22px;
 			}
 
 			fieldset {
@@ -623,6 +738,12 @@
 				cursor: pointer;
 			}
 
+			.closing-cta:hover,
+			.closing-cta:focus-visible {
+				background: var(--accent-dark);
+				color: var(--white);
+			}
+
 			.fx-note {
 				font-size: 0.78rem;
 				color: var(--muted);
@@ -630,31 +751,46 @@
 			}
 
 			.closing-block .fx-note {
-				color: rgba(250, 250, 248, 0.6);
+				color: var(--muted-on-dark);
 			}
 		</style>
 	</head>
 	<body>
-		<header class="site-header">
+		<div class="logo-strip">
 			<div class="wrap">
 				<img class="logo" src="assets/logo-loops.png" alt="Loops de Marcas Rentables" />
 			</div>
-		</header>
+		</div>
 
 		<main>
 			<section class="hero">
-				<div class="wrap">
-					<h1>Tus ventas llevan meses estancadas o aún ni despegan</h1>
-					<p class="lead">
-						Quiero decirte que eso se arregla encontrando dónde está el freno. Y para eso necesitas un plan
-						específico para tu ecommerce.
-					</p>
-					<p class="support">
-						En menos de 5 minutos vas a tener en pantalla el plan completo para triplicar tus ventas. Hecho con
-						los números reales de tu tienda, no con teoría.
-					</p>
-					<button class="btn cta-open" type="button">Generar mi plan gratis</button>
-					<p class="cta-sub">Gratis. Sin tarjeta. Un plan por marca.</p>
+				<div class="wrap-wide">
+					<div class="hero-grid">
+						<div class="hero-content">
+							<h1>Tus ventas llevan meses estancadas o aún ni despegan</h1>
+							<p class="lead">
+								Quiero decirte que eso se arregla encontrando dónde está el freno. Y para eso necesitas un plan
+								específico para tu ecommerce.
+							</p>
+							<p class="support">
+								En menos de 5 minutos vas a tener en pantalla el plan completo para triplicar tus ventas. Hecho con
+								los números reales de tu tienda, no con teoría.
+							</p>
+							<div class="btn-center">
+								<button class="btn cta-open" type="button">Generar mi plan gratis</button>
+								<p class="cta-sub">Gratis. Sin tarjeta. Un plan por marca.</p>
+							</div>
+						</div>
+						<div class="hero-visual" aria-hidden="true">
+							<div class="preview-card">
+								<p class="preview-eyebrow">Tu escenario 3X</p>
+								<p class="preview-number">3X</p>
+								<div class="preview-line"></div>
+								<div class="preview-line short"></div>
+								<span class="preview-chip">Cuello de botella: conversión</span>
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
 
@@ -685,27 +821,27 @@
 					<h2>Lo que vas a tener en pantalla</h2>
 					<div class="what-grid">
 						<div class="what-item">
-							<h3>Tu diagnóstico real</h3>
+							<h3>Tu diagnóstico real 🎯</h3>
 							<p>Dónde está tu marca hoy, dicho sin adornos.</p>
 						</div>
 						<div class="what-item">
-							<h3>La validación matemática</h3>
+							<h3>La validación matemática 🧮</h3>
 							<p>Revisamos que tus números cuadren entre sí. Muchas marcas descubren acá que estaban leyendo mal su propia data.</p>
 						</div>
 						<div class="what-item">
-							<h3>Tu cuello de botella</h3>
+							<h3>Tu cuello de botella 🚧</h3>
 							<p>El freno específico que te tiene estancado. Uno, no diez.</p>
 						</div>
 						<div class="what-item">
-							<h3>Tu escenario 3X</h3>
+							<h3>Tu escenario 3X 📈</h3>
 							<p>Cuánto tiene que subir cada palanca para que tu facturación se triplique. Con las cifras exactas.</p>
 						</div>
 						<div class="what-item">
-							<h3>Tu plan de acción</h3>
+							<h3>Tu plan de acción 🗺️</h3>
 							<p>Qué hacer, en qué orden, empezando esta semana.</p>
 						</div>
 						<div class="what-item">
-							<h3>Los riesgos si no actúas</h3>
+							<h3>Los riesgos si no actúas ⚠️</h3>
 							<p>Qué pasa con tu costo de adquisición si intentas escalar sin corregir el freno.</p>
 						</div>
 					</div>
@@ -727,7 +863,7 @@
 			</section>
 
 			<section class="testimonials">
-				<div class="wrap">
+				<div class="wrap-wide">
 					<h2>Marcas que ya salieron del techo</h2>
 
 					<div class="testimonial">
@@ -740,14 +876,16 @@
 								loading="lazy"
 							></iframe>
 						</div>
-						<h3>Bizoni</h3>
-						<p>José Tomás ya tenía una marca que vendía, pero sentía que había llegado a un techo.</p>
-						<p>
-							Mes tras mes la misma facturación. Probaba estrategias nuevas, invertía en publicidad y creativos, y
-							no tenía claridad sobre qué optimizar para pasar al siguiente nivel. Además, gran parte del
-							marketing dependía de él.
-						</p>
-						<p class="result-line">En 3 meses triplicó su facturación, formó su equipo de marketing y dejó de hacerlo todo solo.</p>
+						<div class="testimonial-text">
+							<h3>Bizoni</h3>
+							<p>José Tomás ya tenía una marca que vendía, pero sentía que había llegado a un techo.</p>
+							<p>
+								Mes tras mes la misma facturación. Probaba estrategias nuevas, invertía en publicidad y creativos, y
+								no tenía claridad sobre qué optimizar para pasar al siguiente nivel. Además, gran parte del
+								marketing dependía de él.
+							</p>
+							<p class="result-line">En 3 meses triplicó su facturación, formó su equipo de marketing y dejó de hacerlo todo solo.</p>
+						</div>
 					</div>
 
 					<div class="testimonial">
@@ -760,13 +898,15 @@
 								loading="lazy"
 							></iframe>
 						</div>
-						<h3>De Pelitos</h3>
-						<p>Fran ya tenía un negocio funcionando y ganas de crecer, pero le faltaba estructura.</p>
-						<p>
-							Había invertido antes en cursos y mentorías, y seguía sin tener claro por dónde empezar ni qué
-							priorizar. Llevaba gran parte del negocio sola.
-						</p>
-						<p class="result-line">En 3 meses duplicó su facturación, amplió su equipo y ganó claridad para decidir.</p>
+						<div class="testimonial-text">
+							<h3>De Pelitos</h3>
+							<p>Fran ya tenía un negocio funcionando y ganas de crecer, pero le faltaba estructura.</p>
+							<p>
+								Había invertido antes en cursos y mentorías, y seguía sin tener claro por dónde empezar ni qué
+								priorizar. Llevaba gran parte del negocio sola.
+							</p>
+							<p class="result-line">En 3 meses duplicó su facturación, amplió su equipo y ganó claridad para decidir.</p>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -797,7 +937,7 @@
 				<!-- Paso 1: identidad + Turnstile -->
 				<div class="step" id="step-1">
 					<p class="step-title">Antes de armar tu plan</p>
-					<p class="step-subtitle">Dejanos tus datos para poder mandarte el reporte.</p>
+					<p class="step-subtitle">Déjanos tus datos para poder mandarte el reporte.</p>
 					<p class="step-error" id="step-1-error"></p>
 
 					<div class="field">
@@ -824,10 +964,11 @@
 					<button class="btn btn-block" type="button" id="continuar-btn">Continuar</button>
 				</div>
 
-				<!-- Paso 2: numeros del negocio -->
+				<!-- Paso 2: números del negocio -->
 				<div class="step" id="step-2" hidden>
 					<p class="step-title">Ahora tus números</p>
-					<p class="step-subtitle">Con esto arma el plan.</p>
+					<p class="step-subtitle">Ingresa estos números para que armemos tu plan de acción.</p>
+					<p class="step-hint">Nunca te pedimos el nombre ni la URL de tu tienda. Tus números quedan entre tú y tu plan.</p>
 					<p class="step-error" id="step-2-error"></p>
 
 					<fieldset>
@@ -968,7 +1109,7 @@
 		</div>
 
 		<script>
-			// La pagina vive en GitHub Pages (plan.marcasrentables.com), el worker vive en Cloudflare.
+			// La página vive en GitHub Pages (plan.marcasrentables.com), el worker vive en Cloudflare.
 			// No son el mismo origen, por eso la URL completa en vez de una ruta relativa.
 			const API_BASE = 'https://growth-advisor-publico.fauadzkassen.workers.dev';
 
@@ -992,7 +1133,7 @@
 			})(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
 			fbq('init', META_PIXEL_ID);
 			fbq('track', 'PageView');
-			// Mide cuanta gente llega a la herramienta vs. cuanta completa, para tasa de conversion.
+			// Mide cuánta gente llega a la herramienta vs. cuánta completa, para tasa de conversión.
 			fbq('track', 'ViewContent');
 
 			const CURRENCY_SYMBOLS = {
@@ -1014,7 +1155,7 @@
 				mensajeFinalMentor: 'Mensaje final del mentor',
 			};
 
-			// Mensajes en lenguaje humano. Nunca se muestra un mensaje del worker sin pasar por aca,
+			// Mensajes en lenguaje humano. Nunca se muestra un mensaje del worker sin pasar por acá,
 			// para no filtrar nombres de campos o variables internas.
 			const FIELD_MESSAGES = {
 				nombre: 'Escribe tu nombre',
@@ -1225,7 +1366,7 @@
 			}
 
 			// Nunca se muestra un mensaje del worker tal cual si huele a interno. 500 siempre es
-			// generico: ahi es donde el worker devolveria nombres de variables de configuracion.
+			// genérico: ahí es donde el worker devolvería nombres de variables de configuración.
 			function friendlyError(status, rawMessage) {
 				if (status === 500) return 'Algo salió mal de nuestro lado. Intenta de nuevo en unos minutos.';
 				if (status === 400) return 'Revisa los datos e intenta de nuevo.';
@@ -1297,7 +1438,7 @@
 						return;
 					}
 
-					fbq('track', 'AnalisisCompletado');
+					fbq('trackCustom', 'AnalisisCompletado');
 					renderReport(result.analysis, result.closing, result.moneda, result.tipoCambio);
 					showStep(stepResult);
 				} catch (err) {
@@ -1313,8 +1454,7 @@
 				if (moneda !== 'USD') {
 					const nota = document.createElement('p');
 					nota.className = 'report-note';
-					nota.textContent =
-						'El diagnóstico de abajo hace sus cálculos en USD para estandarizar la metodología. El cierre está pensado con tu plan de ejecución.';
+					nota.textContent = 'Hacemos los cálculos de este diagnóstico en dólares para estandarizar la metodología.';
 					reportEl.appendChild(nota);
 				}
 
@@ -1340,8 +1480,8 @@
 					.filter(Boolean)
 					.forEach((parrafo) => {
 						const p = document.createElement('p');
-						// Resalta el rango de semanas (el unico numero clave que controlamos nosotros
-						// en este texto, todo lo demas es literal fijo).
+						// Resalta el rango de semanas (el único número clave que controlamos nosotros
+						// en este texto, todo lo demás es literal fijo).
 						const match = parrafo.match(/^(El plan que acabas de leer requiere entre )(\d+ y \d+)( semanas.*)$/);
 						if (match) {
 							p.appendChild(document.createTextNode(match[1]));
