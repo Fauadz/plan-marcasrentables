@@ -3,24 +3,26 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Growth Advisor. Tu plan para triplicar ventas</title>
-		<meta name="description" content="Recibe un plan de accion completo para triplicar tus ventas, generado con los numeros reales de tu negocio." />
+		<title>Tu plan para triplicar ventas. Growth Advisor</title>
+		<meta
+			name="description"
+			content="En menos de 5 minutos vas a tener en pantalla el plan completo para triplicar tus ventas. Hecho con los numeros reales de tu tienda."
+		/>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap"
-			rel="stylesheet"
-		/>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;800;900&display=swap" rel="stylesheet" />
 		<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 		<style>
 			:root {
-				--espresso: #17130f;
-				--paper: #f7f3ec;
-				--cobalt: #1f3fe0;
-				--amber: #d8962f;
-				--font-sans: 'Archivo', sans-serif;
-				--font-serif: 'Newsreader', serif;
-				--font-mono: 'Space Mono', monospace;
+				--accent: #2db3b0;
+				--accent-dark: #1f8e8b;
+				--ink: #16181a;
+				--paper: #fafaf8;
+				--muted: #6b7075;
+				--border: rgba(22, 24, 26, 0.12);
+				--danger: #b3312d;
+				--white: #ffffff;
+				--font: 'Montserrat', sans-serif;
 			}
 
 			* {
@@ -35,107 +37,452 @@
 
 			body {
 				background: var(--paper);
-				color: var(--espresso);
-				font-family: var(--font-sans);
-				line-height: 1.5;
+				color: var(--ink);
+				font-family: var(--font);
+				font-weight: 300;
+				line-height: 1.6;
 				-webkit-font-smoothing: antialiased;
 			}
 
-			.page {
-				max-width: 640px;
-				margin: 0 auto;
-				padding: 24px 20px 64px;
+			img {
+				max-width: 100%;
+				display: block;
 			}
 
-			header.hero {
-				padding: 32px 0 24px;
-				text-align: left;
+			h1,
+			h2,
+			h3 {
+				font-family: var(--font);
+				margin: 0;
+				line-height: 1.15;
+			}
+
+			p {
+				margin: 0;
+			}
+
+			.wrap {
+				max-width: 640px;
+				margin: 0 auto;
+				padding: 0 20px;
+			}
+
+			.wrap-wide {
+				max-width: 900px;
+				margin: 0 auto;
+				padding: 0 20px;
+			}
+
+			/* ---------- Header ---------- */
+
+			.site-header {
+				padding: 20px 0;
+			}
+
+			.site-header .wrap {
+				display: flex;
+				align-items: center;
+			}
+
+			.logo {
+				height: 36px;
+				width: auto;
+			}
+
+			/* ---------- Buttons ---------- */
+
+			.btn {
+				display: inline-block;
+				font-family: var(--font);
+				font-weight: 700;
+				font-size: 1.05rem;
+				text-align: center;
+				background: var(--accent);
+				color: var(--white);
+				border: none;
+				border-radius: 12px;
+				padding: 18px 28px;
+				cursor: pointer;
+				text-decoration: none;
+				transition: background 0.15s ease;
+			}
+
+			.btn:hover {
+				background: var(--accent-dark);
+			}
+
+			.btn:disabled {
+				opacity: 0.6;
+				cursor: not-allowed;
+			}
+
+			.btn-block {
+				display: block;
+				width: 100%;
+			}
+
+			/* ---------- Section rhythm ---------- */
+
+			section {
+				padding: 56px 0;
+			}
+
+			@media (min-width: 720px) {
+				section {
+					padding: 88px 0;
+				}
 			}
 
 			.eyebrow {
-				font-family: var(--font-mono);
-				font-size: 0.8rem;
-				letter-spacing: 0.08em;
+				font-family: var(--font);
+				font-weight: 800;
 				text-transform: uppercase;
-				color: var(--cobalt);
-				margin: 0 0 12px;
+				letter-spacing: 0.12em;
+				color: var(--accent);
+				font-size: 0.8rem;
+				margin: 0 0 14px;
 			}
 
-			h1 {
-				font-family: var(--font-serif);
-				font-weight: 600;
-				font-size: clamp(1.75rem, 6vw, 2.5rem);
-				line-height: 1.15;
-				margin: 0 0 16px;
+			/* ---------- Hero ---------- */
+
+			.hero h1 {
+				font-weight: 900;
+				font-size: clamp(2rem, 7vw, 3.1rem);
+				letter-spacing: -0.01em;
+				margin-bottom: 20px;
 			}
 
-			.hero p {
+			.hero .lead {
+				font-size: 1.15rem;
+				font-weight: 400;
+				margin-bottom: 16px;
+				max-width: 56ch;
+			}
+
+			.hero .support {
 				font-size: 1.05rem;
-				margin: 0;
-				max-width: 52ch;
+				font-weight: 300;
+				margin-bottom: 32px;
+				max-width: 56ch;
+				color: var(--muted);
 			}
 
-			form {
-				background: #ffffff;
-				border: 1px solid rgba(23, 19, 15, 0.12);
-				border-radius: 16px;
+			.hero .cta-sub {
+				margin-top: 12px;
+				font-size: 0.85rem;
+				color: var(--muted);
+			}
+
+			/* ---------- Social proof ---------- */
+
+			.social-proof {
+				text-align: center;
+			}
+
+			.social-proof .eyebrow {
+				display: block;
+			}
+
+			.social-proof img {
+				margin: 0 auto;
+			}
+
+			/* ---------- Difference ---------- */
+
+			.difference h2 {
+				font-weight: 900;
+				font-size: clamp(1.6rem, 5vw, 2.2rem);
+				margin-bottom: 24px;
+			}
+
+			.difference p {
+				font-size: 1.05rem;
+				margin-bottom: 18px;
+			}
+
+			.difference p:last-child {
+				margin-bottom: 0;
+			}
+
+			/* ---------- What you get ---------- */
+
+			.what-you-get h2 {
+				font-weight: 900;
+				font-size: clamp(1.6rem, 5vw, 2.2rem);
+				margin-bottom: 36px;
+			}
+
+			.what-grid {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 28px;
+			}
+
+			@media (min-width: 720px) {
+				.what-grid {
+					grid-template-columns: 1fr 1fr;
+					gap: 40px 32px;
+				}
+			}
+
+			.what-item h3 {
+				font-weight: 800;
+				font-size: 1.1rem;
+				margin-bottom: 8px;
+			}
+
+			.what-item p {
+				color: var(--muted);
+				font-size: 0.98rem;
+			}
+
+			/* ---------- Recognize ---------- */
+
+			.recognize h2 {
+				font-weight: 900;
+				font-size: clamp(1.6rem, 5vw, 2.2rem);
+				margin-bottom: 32px;
+			}
+
+			.recognize-cards {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 14px;
+			}
+
+			@media (min-width: 720px) {
+				.recognize-cards {
+					grid-template-columns: 1fr 1fr;
+				}
+			}
+
+			.recognize-card {
+				background: var(--white);
+				border: 1px solid var(--border);
+				border-radius: 14px;
 				padding: 20px;
-				margin-top: 24px;
+				font-weight: 700;
+				font-size: 1rem;
+			}
+
+			.recognize-closing {
+				margin-top: 28px;
+				font-size: 1.05rem;
+				font-weight: 400;
+			}
+
+			/* ---------- Testimonials ---------- */
+
+			.testimonials h2 {
+				font-weight: 900;
+				font-size: clamp(1.6rem, 5vw, 2.2rem);
+				margin-bottom: 36px;
+			}
+
+			.testimonial {
+				margin-bottom: 48px;
+			}
+
+			.testimonial:last-child {
+				margin-bottom: 0;
+			}
+
+			.testimonial-video {
+				position: relative;
+				width: 100%;
+				padding-top: 56.25%;
+				border-radius: 14px;
+				overflow: hidden;
+				background: var(--ink);
+				margin-bottom: 20px;
+			}
+
+			.testimonial-video iframe {
+				position: absolute;
+				inset: 0;
+				width: 100%;
+				height: 100%;
+				border: 0;
+			}
+
+			.testimonial h3 {
+				font-weight: 800;
+				font-size: 1.15rem;
+				margin-bottom: 12px;
+			}
+
+			.testimonial p {
+				font-size: 1rem;
+				margin-bottom: 12px;
+				color: var(--muted);
+			}
+
+			.testimonial p:last-child {
+				margin-bottom: 0;
+			}
+
+			.testimonial .result-line {
+				color: var(--ink);
+				font-weight: 700;
+			}
+
+			/* ---------- Founder ---------- */
+
+			.founder h2 {
+				font-weight: 900;
+				font-size: clamp(1.6rem, 5vw, 2.2rem);
+				margin-bottom: 24px;
+			}
+
+			.founder p {
+				font-size: 1.05rem;
+				margin-bottom: 16px;
+			}
+
+			.founder p:last-child {
+				margin-bottom: 0;
+			}
+
+			/* ---------- Final CTA ---------- */
+
+			.final-cta {
+				text-align: center;
+				background: var(--ink);
+				color: var(--white);
+			}
+
+			.final-cta h2 {
+				font-weight: 900;
+				font-size: clamp(1.8rem, 6vw, 2.4rem);
+				margin-bottom: 28px;
+			}
+
+			/* ---------- Modal ---------- */
+
+			.modal-overlay {
+				position: fixed;
+				inset: 0;
+				background: rgba(22, 24, 26, 0.55);
+				display: flex;
+				align-items: flex-start;
+				justify-content: center;
+				padding: 24px 16px;
+				overflow-y: auto;
+				z-index: 100;
+			}
+
+			.modal-overlay[hidden] {
+				display: none;
+			}
+
+			.modal {
+				background: var(--paper);
+				border-radius: 18px;
+				max-width: 560px;
+				width: 100%;
+				padding: 28px 22px;
+				position: relative;
+				margin: auto 0;
+			}
+
+			.modal-close {
+				position: absolute;
+				top: 14px;
+				right: 14px;
+				background: none;
+				border: none;
+				font-size: 1.6rem;
+				line-height: 1;
+				color: var(--muted);
+				cursor: pointer;
+				padding: 6px;
+			}
+
+			.step[hidden] {
+				display: none;
+			}
+
+			.step-title {
+				font-weight: 800;
+				font-size: 1.3rem;
+				margin-bottom: 6px;
+				padding-right: 24px;
+			}
+
+			.step-subtitle {
+				font-size: 0.95rem;
+				color: var(--muted);
+				margin-bottom: 24px;
 			}
 
 			fieldset {
 				border: none;
 				padding: 0;
-				margin: 0 0 24px;
-			}
-
-			fieldset:last-of-type {
-				margin-bottom: 0;
+				margin: 0 0 20px;
 			}
 
 			legend {
-				font-family: var(--font-mono);
-				font-size: 0.8rem;
-				letter-spacing: 0.06em;
+				font-family: var(--font);
+				font-weight: 800;
 				text-transform: uppercase;
-				color: var(--espresso);
-				opacity: 0.6;
+				letter-spacing: 0.1em;
+				color: var(--muted);
+				font-size: 0.72rem;
 				padding: 0 0 12px;
 			}
 
 			.field {
-				margin-bottom: 14px;
+				margin-bottom: 16px;
 			}
 
 			label {
 				display: block;
 				font-size: 0.9rem;
-				font-weight: 600;
+				font-weight: 700;
 				margin-bottom: 6px;
 			}
 
 			.field-hint {
 				font-size: 0.8rem;
-				opacity: 0.65;
+				font-weight: 300;
+				color: var(--muted);
 				margin: -2px 0 8px;
 			}
 
 			input,
 			select {
 				width: 100%;
-				font-family: var(--font-sans);
+				font-family: var(--font);
+				font-weight: 400;
 				font-size: 1rem;
-				padding: 12px 14px;
-				border: 1px solid rgba(23, 19, 15, 0.25);
+				padding: 13px 14px;
+				border: 1.5px solid var(--border);
 				border-radius: 10px;
-				background: var(--paper);
-				color: var(--espresso);
+				background: var(--white);
+				color: var(--ink);
 			}
 
 			input:focus,
 			select:focus {
-				outline: 2px solid var(--cobalt);
-				outline-offset: 1px;
+				outline: none;
+				border-color: var(--accent);
+			}
+
+			input.invalid,
+			select.invalid {
+				border-color: var(--danger);
+			}
+
+			.field-error {
+				display: none;
+				color: var(--danger);
+				font-size: 0.82rem;
+				font-weight: 700;
+				margin-top: 6px;
+			}
+
+			.field-error.visible {
+				display: block;
 			}
 
 			.checkbox-row {
@@ -153,56 +500,36 @@
 			}
 
 			.turnstile-slot {
-				margin: 20px 0;
+				margin: 20px 0 8px;
 			}
 
-			button.submit {
-				width: 100%;
-				background: var(--cobalt);
-				color: var(--paper);
-				font-family: var(--font-sans);
-				font-weight: 700;
-				font-size: 1.05rem;
-				border: none;
-				border-radius: 12px;
-				padding: 16px;
-				cursor: pointer;
-			}
-
-			button.submit:disabled {
-				opacity: 0.5;
-				cursor: not-allowed;
-			}
-
-			.form-error {
-				color: #a4331b;
+			.step-error {
+				display: none;
+				background: rgba(179, 49, 45, 0.08);
+				color: var(--danger);
+				border-radius: 10px;
+				padding: 12px 14px;
 				font-size: 0.9rem;
-				margin-top: 12px;
-				display: none;
+				font-weight: 700;
+				margin-bottom: 16px;
 			}
 
-			.form-error.visible {
+			.step-error.visible {
 				display: block;
 			}
 
-			.state {
-				display: none;
-			}
-
-			.state.visible {
-				display: block;
-			}
+			/* ---------- Loading ---------- */
 
 			.loading {
 				text-align: center;
-				padding: 64px 20px;
+				padding: 40px 10px;
 			}
 
 			.spinner {
 				width: 44px;
 				height: 44px;
-				border: 4px solid rgba(31, 63, 224, 0.15);
-				border-top-color: var(--cobalt);
+				border: 4px solid rgba(45, 179, 176, 0.2);
+				border-top-color: var(--accent);
 				border-radius: 50%;
 				margin: 0 auto 20px;
 				animation: spin 0.9s linear infinite;
@@ -215,174 +542,378 @@
 			}
 
 			.loading p {
-				font-family: var(--font-serif);
-				font-size: 1.15rem;
+				font-weight: 700;
+				font-size: 1.05rem;
 			}
 
 			.loading .sub {
-				font-family: var(--font-sans);
+				font-weight: 300;
 				font-size: 0.9rem;
-				opacity: 0.7;
-			}
-
-			.report {
+				color: var(--muted);
 				margin-top: 8px;
 			}
 
+			/* ---------- Report ---------- */
+
 			.report-block {
-				background: #ffffff;
-				border: 1px solid rgba(23, 19, 15, 0.12);
-				border-radius: 16px;
+				background: var(--white);
+				border: 1px solid var(--border);
+				border-radius: 14px;
 				padding: 20px;
-				margin-bottom: 16px;
+				margin-bottom: 14px;
+				max-width: 62ch;
 			}
 
 			.report-block h2 {
-				font-family: var(--font-mono);
-				font-size: 0.78rem;
-				letter-spacing: 0.06em;
+				font-family: var(--font);
+				font-weight: 800;
 				text-transform: uppercase;
-				color: var(--cobalt);
+				letter-spacing: 0.08em;
+				color: var(--accent);
+				font-size: 0.75rem;
 				margin: 0 0 10px;
 			}
 
 			.report-block p {
 				margin: 0;
 				white-space: pre-line;
+				font-size: 0.98rem;
 			}
 
-			.closing {
-				background: var(--espresso);
+			.report-note {
+				font-size: 0.82rem;
+				color: var(--muted);
+				margin-bottom: 16px;
+			}
+
+			.closing-block {
+				background: var(--ink);
 				color: var(--paper);
 				border-radius: 16px;
-				padding: 24px 20px;
-				margin-top: 8px;
+				padding: 26px 20px;
+				margin-top: 22px;
 			}
 
-			.closing p {
+			.closing-block p {
 				margin: 0 0 16px;
+				font-size: 0.98rem;
 			}
 
-			.closing p:last-of-type {
+			.closing-block p:last-of-type {
 				margin-bottom: 0;
 			}
 
-			.cta {
+			.closing-block .weeks {
+				color: var(--accent);
+				font-weight: 700;
+			}
+
+			.closing-cta {
 				display: block;
 				text-align: center;
-				background: var(--amber);
-				color: var(--espresso);
+				background: var(--accent);
+				color: var(--white);
 				font-weight: 700;
+				font-size: 1.05rem;
 				text-decoration: none;
+				border: none;
 				border-radius: 12px;
-				padding: 16px;
-				margin-top: 20px;
+				padding: 18px;
+				margin-top: 22px;
+				cursor: pointer;
+			}
+
+			.fx-note {
+				font-size: 0.78rem;
+				color: var(--muted);
+				margin-top: 16px;
+			}
+
+			.closing-block .fx-note {
+				color: rgba(250, 250, 248, 0.6);
 			}
 		</style>
 	</head>
 	<body>
-		<div class="page">
-			<header class="hero">
-				<p class="eyebrow">Growth Advisor</p>
-				<!-- TODO: copy definitivo del titular y la bajada los entrega Fauadz aparte (seccion 6 del brief). -->
-				<h1>Tu plan para triplicar ventas, con tus propios numeros</h1>
-				<p>
-					Llena el formulario con los datos reales de tu negocio y recibe en pantalla un plan de accion completo,
-					generado especificamente para ti.
-				</p>
-			</header>
+		<header class="site-header">
+			<div class="wrap">
+				<img class="logo" src="assets/logo-loops.png" alt="Loops de Marcas Rentables" />
+			</div>
+		</header>
 
-			<section id="state-form" class="state visible">
-				<form id="lead-form" novalidate>
-					<fieldset>
-						<legend>Contacto</legend>
-						<div class="field">
-							<label for="nombre">Nombre</label>
-							<input id="nombre" name="nombre" type="text" autocomplete="name" required />
+		<main>
+			<section class="hero">
+				<div class="wrap">
+					<h1>Tus ventas llevan meses estancadas o aún ni despegan</h1>
+					<p class="lead">
+						Quiero decirte que eso se arregla encontrando dónde está el freno. Y para eso necesitas un plan
+						específico para tu ecommerce.
+					</p>
+					<p class="support">
+						En menos de 5 minutos vas a tener en pantalla el plan completo para triplicar tus ventas. Hecho con
+						los números reales de tu tienda, no con teoría.
+					</p>
+					<button class="btn cta-open" type="button">Generar mi plan gratis</button>
+					<p class="cta-sub">Gratis. Sin tarjeta. Un plan por marca.</p>
+				</div>
+			</section>
+
+			<section class="social-proof">
+				<div class="wrap">
+					<p class="eyebrow">Más de 60 marcas escaladas con este sistema</p>
+					<img src="assets/social-proof.png" alt="Cinco estrellas y logos de marcas que ya trabajaron con Loops" />
+				</div>
+			</section>
+
+			<section class="difference">
+				<div class="wrap">
+					<h2>Esto no mira tu web. Mira tus números.</h2>
+					<p>
+						La mayoría de los diagnósticos gratis abren tu tienda, la miran por fuera y te dicen que cambies un
+						botón.
+					</p>
+					<p>
+						Este parte de tu facturación, tu conversión, tu ticket promedio y tu costo de adquisición. Es la
+						diferencia entre una opinión sobre tu vitrina y un diagnóstico hecho con tu contabilidad en la mano.
+					</p>
+					<p>Por eso el plan que sale te dice qué mover primero, y cuánto tiene que moverse para que llegues al triple.</p>
+				</div>
+			</section>
+
+			<section class="what-you-get">
+				<div class="wrap-wide">
+					<h2>Lo que vas a tener en pantalla</h2>
+					<div class="what-grid">
+						<div class="what-item">
+							<h3>Tu diagnóstico real</h3>
+							<p>Dónde está tu marca hoy, dicho sin adornos.</p>
 						</div>
-						<div class="field">
-							<label for="correo">Correo</label>
-							<input id="correo" name="correo" type="email" autocomplete="email" required />
+						<div class="what-item">
+							<h3>La validación matemática</h3>
+							<p>Revisamos que tus números cuadren entre sí. Muchas marcas descubren acá que estaban leyendo mal su propia data.</p>
 						</div>
-						<div class="field">
-							<label for="whatsapp">WhatsApp</label>
-							<input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" placeholder="+51999999999" required />
+						<div class="what-item">
+							<h3>Tu cuello de botella</h3>
+							<p>El freno específico que te tiene estancado. Uno, no diez.</p>
 						</div>
-					</fieldset>
+						<div class="what-item">
+							<h3>Tu escenario 3X</h3>
+							<p>Cuánto tiene que subir cada palanca para que tu facturación se triplique. Con las cifras exactas.</p>
+						</div>
+						<div class="what-item">
+							<h3>Tu plan de acción</h3>
+							<p>Qué hacer, en qué orden, empezando esta semana.</p>
+						</div>
+						<div class="what-item">
+							<h3>Los riesgos si no actúas</h3>
+							<p>Qué pasa con tu costo de adquisición si intentas escalar sin corregir el freno.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="recognize">
+				<div class="wrap">
+					<h2>¿En cuál de estas te reconoces?</h2>
+					<div class="recognize-cards">
+						<div class="recognize-card">Traes tráfico y no convierte</div>
+						<div class="recognize-card">Vendes bien, pero el margen se lo come todo</div>
+						<div class="recognize-card">Cada venta te cuesta más cara que el mes pasado</div>
+						<div class="recognize-card">El cliente compra una vez y no vuelve</div>
+						<div class="recognize-card">Facturas lo mismo hace meses y no sabes qué mover</div>
+					</div>
+					<p class="recognize-closing">Si no sabes cuál es la tuya, eso es exactamente lo que este plan te dice.</p>
+				</div>
+			</section>
+
+			<section class="testimonials">
+				<div class="wrap">
+					<h2>Marcas que ya salieron del techo</h2>
+
+					<div class="testimonial">
+						<div class="testimonial-video">
+							<iframe
+								src="https://www.youtube.com/embed/UZVfkZaFXao"
+								title="Testimonio Bizoni"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen
+								loading="lazy"
+							></iframe>
+						</div>
+						<h3>Bizoni</h3>
+						<p>José Tomás ya tenía una marca que vendía, pero sentía que había llegado a un techo.</p>
+						<p>
+							Mes tras mes la misma facturación. Probaba estrategias nuevas, invertía en publicidad y creativos, y
+							no tenía claridad sobre qué optimizar para pasar al siguiente nivel. Además, gran parte del
+							marketing dependía de él.
+						</p>
+						<p class="result-line">En 3 meses triplicó su facturación, formó su equipo de marketing y dejó de hacerlo todo solo.</p>
+					</div>
+
+					<div class="testimonial">
+						<div class="testimonial-video">
+							<iframe
+								src="https://www.youtube.com/embed/FZN6JaRPPX0"
+								title="Testimonio De Pelitos"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen
+								loading="lazy"
+							></iframe>
+						</div>
+						<h3>De Pelitos</h3>
+						<p>Fran ya tenía un negocio funcionando y ganas de crecer, pero le faltaba estructura.</p>
+						<p>
+							Había invertido antes en cursos y mentorías, y seguía sin tener claro por dónde empezar ni qué
+							priorizar. Llevaba gran parte del negocio sola.
+						</p>
+						<p class="result-line">En 3 meses duplicó su facturación, amplió su equipo y ganó claridad para decidir.</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="founder">
+				<div class="wrap">
+					<h2>Te lo digo de fundador a fundador</h2>
+					<p>
+						No soy un coach ni un gurú. Dirijo mis 3 marcas todos los días, con los mismos problemas de
+						proveedores, de campañas y de despachos que tienes tú.
+					</p>
+					<p>Por eso armé un programa hecho por fundadores que operan sus propias marcas, para fundadores como tú.</p>
+				</div>
+			</section>
+
+			<section class="final-cta">
+				<div class="wrap">
+					<h2>Tu plan está a 5 minutos</h2>
+					<button class="btn cta-open" type="button">Generar mi plan gratis</button>
+				</div>
+			</section>
+		</main>
+
+		<div class="modal-overlay" id="modal-overlay" hidden>
+			<div class="modal">
+				<button class="modal-close" id="modal-close" type="button" aria-label="Cerrar">&times;</button>
+
+				<!-- Paso 1: identidad + Turnstile -->
+				<div class="step" id="step-1">
+					<p class="step-title">Antes de armar tu plan</p>
+					<p class="step-subtitle">Dejanos tus datos para poder mandarte el reporte.</p>
+					<p class="step-error" id="step-1-error"></p>
+
+					<div class="field">
+						<label for="nombre">Nombre</label>
+						<input id="nombre" name="nombre" type="text" autocomplete="name" />
+						<p class="field-error" id="nombre-error"></p>
+					</div>
+					<div class="field">
+						<label for="correo">Correo</label>
+						<input id="correo" name="correo" type="email" autocomplete="email" />
+						<p class="field-error" id="correo-error"></p>
+					</div>
+					<div class="field">
+						<label for="whatsapp">WhatsApp</label>
+						<input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" placeholder="+51999999999" />
+						<p class="field-error" id="whatsapp-error"></p>
+					</div>
+
+					<div class="turnstile-slot">
+						<div class="cf-turnstile" data-sitekey="0x4AAAAAAEQcv8j3XyKadRML"></div>
+						<p class="field-error" id="turnstile-error"></p>
+					</div>
+
+					<button class="btn btn-block" type="button" id="continuar-btn">Continuar</button>
+				</div>
+
+				<!-- Paso 2: numeros del negocio -->
+				<div class="step" id="step-2" hidden>
+					<p class="step-title">Ahora tus números</p>
+					<p class="step-subtitle">Con esto arma el plan.</p>
+					<p class="step-error" id="step-2-error"></p>
 
 					<fieldset>
-						<legend>Tu pais</legend>
+						<legend>Tu país</legend>
 						<div class="field">
-							<label for="pais">Donde opera tu negocio</label>
-							<p class="field-hint">Esto define en que moneda vas a escribir los numeros de abajo.</p>
-							<select id="pais" name="pais" required>
+							<label for="pais">Dónde opera tu negocio</label>
+							<p class="field-hint">Esto define en qué moneda vas a escribir los números de abajo.</p>
+							<select id="pais" name="pais">
+								<option value="">Selecciona una opción</option>
 								<option value="CLP">Chile (CLP)</option>
-								<option value="MXN">Mexico (MXN)</option>
+								<option value="MXN">México (MXN)</option>
 								<option value="COP">Colombia (COP)</option>
-								<option value="PEN">Peru (PEN)</option>
+								<option value="PEN">Perú (PEN)</option>
 								<option value="ARS">Argentina (ARS)</option>
 								<option value="USD">Estados Unidos (USD)</option>
 								<option value="USD">Ecuador (USD)</option>
-								<option value="USD">Otro pais (USD)</option>
+								<option value="USD">Otro país (USD)</option>
 							</select>
+							<p class="field-error" id="pais-error"></p>
 						</div>
 					</fieldset>
 
 					<fieldset>
-						<legend>Tus numeros de hoy</legend>
+						<legend>Tus números de hoy</legend>
 						<div class="field">
-							<label for="currentRevenue" data-label-base="Facturacion mensual sin impuestos">Facturacion mensual sin impuestos</label>
+							<label for="currentRevenue" data-label-base="Facturación mensual sin impuestos">Facturación mensual sin impuestos</label>
 							<p class="field-hint">
-								Ventas netas, no el total con IVA. En Shopify es el numero de "Ventas netas", no el de "Ventas totales".
+								Ventas netas, no el total con IVA. En Shopify es el número de "Ventas netas", no el de "Ventas totales".
 							</p>
-							<input id="currentRevenue" name="currentRevenue" type="number" min="0" step="1" required />
+							<input id="currentRevenue" name="currentRevenue" type="number" min="0" step="1" />
+							<p class="field-error" id="currentRevenue-error"></p>
 						</div>
 						<div class="field">
-							<label for="targetRevenue" data-label-base="Meta de facturacion deseada">Meta de facturacion deseada</label>
-							<input id="targetRevenue" name="targetRevenue" type="number" min="0" step="1" required />
+							<label for="targetRevenue" data-label-base="Meta de facturación deseada">Meta de facturación deseada</label>
+							<input id="targetRevenue" name="targetRevenue" type="number" min="0" step="1" />
+							<p class="field-error" id="targetRevenue-error"></p>
 						</div>
 						<div class="field">
 							<label for="monthlySessions">Sesiones mensuales de tu tienda</label>
-							<input id="monthlySessions" name="monthlySessions" type="number" min="0" step="1" required />
+							<input id="monthlySessions" name="monthlySessions" type="number" min="0" step="1" />
+							<p class="field-error" id="monthlySessions-error"></p>
 						</div>
 						<div class="field">
-							<label for="conversionRate">Tasa de conversion actual (%)</label>
-							<input id="conversionRate" name="conversionRate" type="number" min="0" step="0.01" required />
+							<label for="conversionRate">Tasa de conversión actual (%)</label>
+							<input id="conversionRate" name="conversionRate" type="number" min="0" step="0.01" />
+							<p class="field-error" id="conversionRate-error"></p>
 						</div>
 						<div class="field">
 							<label for="aov" data-label-base="Ticket promedio, AOV">Ticket promedio, AOV</label>
-							<input id="aov" name="aov" type="number" min="0" step="0.01" required />
+							<input id="aov" name="aov" type="number" min="0" step="0.01" />
+							<p class="field-error" id="aov-error"></p>
 						</div>
 					</fieldset>
 
 					<fieldset>
-						<legend>Adquisicion y margen</legend>
+						<legend>Adquisición y margen</legend>
 						<div class="field">
 							<label for="roas">ROAS actual</label>
-							<input id="roas" name="roas" type="number" min="0" step="0.01" required />
+							<input id="roas" name="roas" type="number" min="0" step="0.01" />
+							<p class="field-error" id="roas-error"></p>
 						</div>
 						<div class="field">
 							<label for="cac" data-label-base="CAC promedio">CAC promedio</label>
-							<input id="cac" name="cac" type="number" min="0" step="0.01" required />
+							<input id="cac" name="cac" type="number" min="0" step="0.01" />
+							<p class="field-error" id="cac-error"></p>
 						</div>
 						<div class="field">
 							<label for="margin">Margen promedio de producto (%)</label>
-							<input id="margin" name="margin" type="number" min="0" step="0.01" required />
+							<input id="margin" name="margin" type="number" min="0" step="0.01" />
+							<p class="field-error" id="margin-error"></p>
 						</div>
 						<div class="field">
 							<label for="productType">Tipo de producto</label>
-							<select id="productType" name="productType" required>
-								<option value="">Selecciona una opcion</option>
+							<select id="productType" name="productType">
+								<option value="">Selecciona una opción</option>
 								<option value="consumible">Consumible</option>
 								<option value="duradero">Duradero</option>
 								<option value="moda">Moda o accesorios</option>
 								<option value="otro">Otro</option>
 							</select>
+							<p class="field-error" id="productType-error"></p>
 						</div>
 					</fieldset>
 
 					<fieldset>
-						<legend>Retencion y canales</legend>
+						<legend>Retención y canales</legend>
 						<div class="field checkbox-row">
 							<input id="emailMarketing" name="emailMarketing" type="checkbox" />
 							<label for="emailMarketing">Tengo Email Marketing activo</label>
@@ -393,53 +924,53 @@
 						</div>
 						<div class="field">
 							<label for="repurchaseFrequency">Frecuencia de recompra estimada</label>
-							<select id="repurchaseFrequency" name="repurchaseFrequency" required>
-								<option value="">Selecciona una opcion</option>
+							<select id="repurchaseFrequency" name="repurchaseFrequency">
+								<option value="">Selecciona una opción</option>
 								<option value="baja">Baja</option>
 								<option value="media">Media</option>
 								<option value="alta">Alta</option>
 							</select>
+							<p class="field-error" id="repurchaseFrequency-error"></p>
 						</div>
 						<div class="field">
 							<label for="returningCustomerRate">Tasa de clientes habituales (%)</label>
-							<input id="returningCustomerRate" name="returningCustomerRate" type="number" min="0" step="0.01" required />
+							<input id="returningCustomerRate" name="returningCustomerRate" type="number" min="0" step="0.01" />
+							<p class="field-error" id="returningCustomerRate-error"></p>
 						</div>
 						<div class="field">
 							<label for="adsExperience">Tu nivel de experiencia con Ads</label>
-							<select id="adsExperience" name="adsExperience" required>
-								<option value="">Selecciona una opcion</option>
+							<select id="adsExperience" name="adsExperience">
+								<option value="">Selecciona una opción</option>
 								<option value="principiante">Principiante</option>
 								<option value="intermedio">Intermedio</option>
 								<option value="avanzado">Avanzado</option>
 							</select>
+							<p class="field-error" id="adsExperience-error"></p>
 						</div>
 					</fieldset>
 
-					<div class="turnstile-slot">
-						<div class="cf-turnstile" data-sitekey="0x4AAAAAAEQcv8j3XyKadRML"></div>
-					</div>
+					<button class="btn btn-block" type="button" id="generar-btn">Generar mi plan</button>
+				</div>
 
-					<button class="submit" type="submit">Genera mi plan de crecimiento</button>
-					<p class="form-error" id="form-error"></p>
-				</form>
-			</section>
+				<!-- Loading -->
+				<div class="step loading" id="step-loading" hidden>
+					<div class="spinner"></div>
+					<p>Estamos generando tu plan de crecimiento.</p>
+					<p class="sub">Esto puede tardar un minuto. No cierres esta pantalla.</p>
+				</div>
 
-			<section id="state-loading" class="state loading">
-				<div class="spinner"></div>
-				<p>Estamos generando tu plan de crecimiento.</p>
-				<p class="sub">Esto puede tardar un minuto. No cierres esta pantalla.</p>
-			</section>
-
-			<section id="state-result" class="state">
-				<div class="report" id="report-blocks"></div>
-				<div class="closing" id="closing-block"></div>
-			</section>
+				<!-- Resultado -->
+				<div class="step" id="step-result" hidden>
+					<div id="report-blocks"></div>
+					<div class="closing-block" id="closing-block"></div>
+				</div>
+			</div>
 		</div>
 
 		<script>
 			// La pagina vive en GitHub Pages (plan.marcasrentables.com), el worker vive en Cloudflare.
 			// No son el mismo origen, por eso la URL completa en vez de una ruta relativa.
-			const API_URL = 'https://growth-advisor-publico.fauadzkassen.workers.dev/analizar';
+			const API_BASE = 'https://growth-advisor-publico.fauadzkassen.workers.dev';
 
 			// Mismo pixel que la landing del VSL (confirmado por Fauadz 2026-08-15), hereda historial y audiencias.
 			const META_PIXEL_ID = '1405420914933496';
@@ -461,18 +992,8 @@
 			})(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
 			fbq('init', META_PIXEL_ID);
 			fbq('track', 'PageView');
-			// Mide cuanta gente llega a la herramienta vs. cuanta completa (Lead), para tasa de conversion.
+			// Mide cuanta gente llega a la herramienta vs. cuanta completa, para tasa de conversion.
 			fbq('track', 'ViewContent');
-
-			const REPORT_LABELS = {
-				diagnosticoGeneral: 'Diagnostico general',
-				tusNumerosHoy: 'Tus numeros hoy',
-				tuCuelloBotella: 'Tu cuello de botella',
-				tuCaminoHacia3X: 'Tu camino hacia el 3X',
-				queDebesHacerEstaSemana: 'Que debes hacer esta semana',
-				riesgosSiNoActuas: 'Riesgos si no actuas',
-				mensajeFinalMentor: 'Mensaje final del mentor',
-			};
 
 			const CURRENCY_SYMBOLS = {
 				CLP: '$ CLP',
@@ -483,13 +1004,71 @@
 				USD: '$ USD',
 			};
 
-			const form = document.getElementById('lead-form');
-			const stateForm = document.getElementById('state-form');
-			const stateLoading = document.getElementById('state-loading');
-			const stateResult = document.getElementById('state-result');
-			const formError = document.getElementById('form-error');
+			const REPORT_LABELS = {
+				diagnosticoGeneral: 'Diagnóstico general',
+				tusNumerosHoy: 'Tus números hoy',
+				tuCuelloBotella: 'Tu cuello de botella',
+				tuCaminoHacia3X: 'Tu camino hacia el 3X',
+				queDebesHacerEstaSemana: 'Qué debes hacer esta semana',
+				riesgosSiNoActuas: 'Riesgos si no actúas',
+				mensajeFinalMentor: 'Mensaje final del mentor',
+			};
+
+			// Mensajes en lenguaje humano. Nunca se muestra un mensaje del worker sin pasar por aca,
+			// para no filtrar nombres de campos o variables internas.
+			const FIELD_MESSAGES = {
+				nombre: 'Escribe tu nombre',
+				correo: 'Escribe un correo válido',
+				whatsapp: 'Escribe tu WhatsApp con el código de país',
+				pais: 'Elige el país donde opera tu negocio',
+				currentRevenue: 'Escribe tu facturación mensual',
+				targetRevenue: 'Escribe tu meta de facturación',
+				monthlySessions: 'Escribe tus sesiones mensuales',
+				conversionRate: 'Escribe tu tasa de conversión',
+				aov: 'Escribe tu ticket promedio',
+				roas: 'Escribe tu ROAS actual',
+				cac: 'Escribe tu CAC promedio',
+				margin: 'Escribe tu margen de producto',
+				productType: 'Elige el tipo de producto',
+				repurchaseFrequency: 'Elige la frecuencia de recompra',
+				returningCustomerRate: 'Escribe tu tasa de clientes habituales',
+				adsExperience: 'Elige tu nivel de experiencia con ads',
+			};
+
+			const modalOverlay = document.getElementById('modal-overlay');
+			const modalClose = document.getElementById('modal-close');
+			const step1 = document.getElementById('step-1');
+			const step2 = document.getElementById('step-2');
+			const stepLoading = document.getElementById('step-loading');
+			const stepResult = document.getElementById('step-result');
+			const step1Error = document.getElementById('step-1-error');
+			const step2Error = document.getElementById('step-2-error');
 			const paisSelect = document.getElementById('pais');
 			const currencyLabels = document.querySelectorAll('[data-label-base]');
+			const continuarBtn = document.getElementById('continuar-btn');
+			const generarBtn = document.getElementById('generar-btn');
+
+			let sessionToken = null;
+
+			function openModal() {
+				modalOverlay.hidden = false;
+				document.body.style.overflow = 'hidden';
+			}
+
+			function closeModal() {
+				modalOverlay.hidden = true;
+				document.body.style.overflow = '';
+			}
+
+			document.querySelectorAll('.cta-open').forEach((btn) => btn.addEventListener('click', openModal));
+			modalClose.addEventListener('click', closeModal);
+			modalOverlay.addEventListener('click', (event) => {
+				if (event.target === modalOverlay) closeModal();
+			});
+
+			function showStep(step) {
+				[step1, step2, stepLoading, stepResult].forEach((el) => (el.hidden = el !== step));
+			}
 
 			function updateCurrencyLabels() {
 				const simbolo = CURRENCY_SYMBOLS[paisSelect.value] || CURRENCY_SYMBOLS.USD;
@@ -497,31 +1076,245 @@
 					label.textContent = `${label.dataset.labelBase} (${simbolo})`;
 				});
 			}
-
 			paisSelect.addEventListener('change', updateCurrencyLabels);
 			updateCurrencyLabels();
 
-			function showState(state) {
-				[stateForm, stateLoading, stateResult].forEach((el) => el.classList.remove('visible'));
-				state.classList.add('visible');
+			function markInvalid(fieldId, message) {
+				const field = document.getElementById(fieldId);
+				const errorEl = document.getElementById(fieldId + '-error');
+				field.classList.add('invalid');
+				if (errorEl) {
+					errorEl.textContent = message;
+					errorEl.classList.add('visible');
+				}
 			}
 
-			function setFormError(message) {
-				formError.textContent = message;
-				formError.classList.toggle('visible', Boolean(message));
+			function clearInvalid(fieldId) {
+				const field = document.getElementById(fieldId);
+				const errorEl = document.getElementById(fieldId + '-error');
+				field.classList.remove('invalid');
+				if (errorEl) {
+					errorEl.textContent = '';
+					errorEl.classList.remove('visible');
+				}
 			}
+
+			// El error de un campo se limpia solo cuando el usuario lo corrige.
+			['nombre', 'correo', 'whatsapp'].forEach((id) => {
+				document.getElementById(id).addEventListener('input', () => clearInvalid(id));
+			});
+			[
+				'pais',
+				'currentRevenue',
+				'targetRevenue',
+				'monthlySessions',
+				'conversionRate',
+				'aov',
+				'roas',
+				'cac',
+				'margin',
+				'productType',
+				'repurchaseFrequency',
+				'returningCustomerRate',
+				'adsExperience',
+			].forEach((id) => {
+				const el = document.getElementById(id);
+				el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', () => clearInvalid(id));
+			});
+
+			function scrollToField(fieldId) {
+				document.getElementById(fieldId).scrollIntoView({ behavior: 'smooth', block: 'center' });
+			}
+
+			function setStepError(el, message) {
+				el.textContent = message;
+				el.classList.toggle('visible', Boolean(message));
+			}
+
+			function validateStep1() {
+				let firstInvalid = null;
+				const nombre = document.getElementById('nombre').value.trim();
+				const correo = document.getElementById('correo').value.trim();
+				const whatsapp = document.getElementById('whatsapp').value.trim();
+				const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
+
+				if (!nombre) {
+					markInvalid('nombre', FIELD_MESSAGES.nombre);
+					firstInvalid = firstInvalid || 'nombre';
+				}
+				if (!correoValido) {
+					markInvalid('correo', FIELD_MESSAGES.correo);
+					firstInvalid = firstInvalid || 'correo';
+				}
+				if (!whatsapp) {
+					markInvalid('whatsapp', FIELD_MESSAGES.whatsapp);
+					firstInvalid = firstInvalid || 'whatsapp';
+				}
+
+				const tokenInput = document.querySelector('#step-1 input[name="cf-turnstile-response"]');
+				const hasTurnstile = Boolean(tokenInput && tokenInput.value);
+				setStepError(document.getElementById('turnstile-error'), hasTurnstile ? '' : 'Completa la verificación de seguridad');
+
+				if (firstInvalid) {
+					scrollToField(firstInvalid);
+					return null;
+				}
+				if (!hasTurnstile) {
+					document.getElementById('turnstile-error').scrollIntoView({ behavior: 'smooth', block: 'center' });
+					return null;
+				}
+
+				return { nombre, correo, whatsapp, turnstileToken: tokenInput.value };
+			}
+
+			function validateStep2() {
+				let firstInvalid = null;
+				const requiredNumbers = [
+					'currentRevenue',
+					'targetRevenue',
+					'monthlySessions',
+					'conversionRate',
+					'aov',
+					'roas',
+					'cac',
+					'margin',
+					'returningCustomerRate',
+				];
+				const requiredSelects = ['pais', 'productType', 'repurchaseFrequency', 'adsExperience'];
+
+				requiredSelects.forEach((id) => {
+					const el = document.getElementById(id);
+					if (!el.value) {
+						markInvalid(id, FIELD_MESSAGES[id]);
+						firstInvalid = firstInvalid || id;
+					}
+				});
+
+				requiredNumbers.forEach((id) => {
+					const el = document.getElementById(id);
+					if (el.value === '' || Number.isNaN(Number(el.value))) {
+						markInvalid(id, FIELD_MESSAGES[id]);
+						firstInvalid = firstInvalid || id;
+					}
+				});
+
+				if (firstInvalid) {
+					scrollToField(firstInvalid);
+					return null;
+				}
+
+				return {
+					moneda: document.getElementById('pais').value,
+					negocio: {
+						currentRevenue: Number(document.getElementById('currentRevenue').value),
+						targetRevenue: Number(document.getElementById('targetRevenue').value),
+						monthlySessions: Number(document.getElementById('monthlySessions').value),
+						conversionRate: Number(document.getElementById('conversionRate').value),
+						aov: Number(document.getElementById('aov').value),
+						roas: Number(document.getElementById('roas').value),
+						cac: Number(document.getElementById('cac').value),
+						margin: Number(document.getElementById('margin').value),
+						productType: document.getElementById('productType').value,
+						emailMarketing: document.getElementById('emailMarketing').checked,
+						whatsappMarketing: document.getElementById('whatsappMarketing').checked,
+						repurchaseFrequency: document.getElementById('repurchaseFrequency').value,
+						returningCustomerRate: Number(document.getElementById('returningCustomerRate').value),
+						adsExperience: document.getElementById('adsExperience').value,
+					},
+				};
+			}
+
+			// Nunca se muestra un mensaje del worker tal cual si huele a interno. 500 siempre es
+			// generico: ahi es donde el worker devolveria nombres de variables de configuracion.
+			function friendlyError(status, rawMessage) {
+				if (status === 500) return 'Algo salió mal de nuestro lado. Intenta de nuevo en unos minutos.';
+				if (status === 400) return 'Revisa los datos e intenta de nuevo.';
+				return rawMessage || 'Algo salió mal. Intenta de nuevo.';
+			}
+
+			continuarBtn.addEventListener('click', async () => {
+				setStepError(step1Error, '');
+				const data = validateStep1();
+				if (!data) return;
+
+				continuarBtn.disabled = true;
+				continuarBtn.textContent = 'Enviando...';
+
+				try {
+					const response = await fetch(`${API_BASE}/contacto`, {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify(data),
+					});
+					const result = await response.json();
+
+					if (!response.ok) {
+						setStepError(step1Error, friendlyError(response.status, result.error));
+						return;
+					}
+
+					sessionToken = result.sessionToken;
+					fbq('track', 'Lead');
+					showStep(step2);
+				} catch (err) {
+					setStepError(step1Error, 'No pudimos conectar con el servidor. Revisa tu conexión e intenta de nuevo.');
+				} finally {
+					continuarBtn.disabled = false;
+					continuarBtn.textContent = 'Continuar';
+				}
+			});
+
+			generarBtn.addEventListener('click', async () => {
+				setStepError(step2Error, '');
+				const data = validateStep2();
+				if (!data) return;
+
+				if (!sessionToken) {
+					showStep(step1);
+					setStepError(step1Error, 'Tu sesión venció. Vuelve a completar tus datos.');
+					return;
+				}
+
+				showStep(stepLoading);
+
+				try {
+					const response = await fetch(`${API_BASE}/analizar`, {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({ sessionToken, ...data }),
+					});
+					const result = await response.json();
+
+					if (!response.ok) {
+						showStep(step2);
+						if (response.status === 401) {
+							sessionToken = null;
+							showStep(step1);
+							setStepError(step1Error, 'Tu sesión venció. Vuelve a completar tus datos.');
+						} else {
+							setStepError(step2Error, friendlyError(response.status, result.error));
+						}
+						return;
+					}
+
+					fbq('track', 'AnalisisCompletado');
+					renderReport(result.analysis, result.closing, result.moneda, result.tipoCambio);
+					showStep(stepResult);
+				} catch (err) {
+					showStep(step2);
+					setStepError(step2Error, 'No pudimos conectar con el servidor. Revisa tu conexión e intenta de nuevo.');
+				}
+			});
 
 			function renderReport(analysis, closing, moneda, tipoCambio) {
 				const reportEl = document.getElementById('report-blocks');
 				reportEl.innerHTML = '';
 
 				if (moneda !== 'USD') {
-					// TODO: el diagnostico principal (analysis) todavia sale en USD, no en la
-					// moneda local. Nota provisional mientras se define la solucion (ver chat).
 					const nota = document.createElement('p');
-					nota.className = 'field-hint';
-					nota.style.marginBottom = '16px';
-					nota.textContent = 'El diagnostico de abajo hace sus calculos en USD para estandarizar la metodologia. El cierre y el CTA si estan en tu moneda.';
+					nota.className = 'report-note';
+					nota.textContent =
+						'El diagnóstico de abajo hace sus cálculos en USD para estandarizar la metodología. El cierre está pensado con tu plan de ejecución.';
 					reportEl.appendChild(nota);
 				}
 
@@ -541,20 +1334,30 @@
 				const closingEl = document.getElementById('closing-block');
 				closingEl.innerHTML = '';
 
-				// El bloque de cierre llega como texto corrido (parte A generada + parte B fija),
-				// separado en parrafos por linea en blanco.
 				closing
 					.split(/\n\s*\n/)
 					.map((parrafo) => parrafo.trim())
 					.filter(Boolean)
 					.forEach((parrafo) => {
 						const p = document.createElement('p');
-						p.textContent = parrafo;
+						// Resalta el rango de semanas (el unico numero clave que controlamos nosotros
+						// en este texto, todo lo demas es literal fijo).
+						const match = parrafo.match(/^(El plan que acabas de leer requiere entre )(\d+ y \d+)( semanas.*)$/);
+						if (match) {
+							p.appendChild(document.createTextNode(match[1]));
+							const span = document.createElement('span');
+							span.className = 'weeks';
+							span.textContent = match[2];
+							p.appendChild(span);
+							p.appendChild(document.createTextNode(match[3]));
+						} else {
+							p.textContent = parrafo;
+						}
 						closingEl.appendChild(p);
 					});
 
 				const cta = document.createElement('a');
-				cta.className = 'cta';
+				cta.className = 'closing-cta';
 				// TODO: reemplazar por la URL real de agendamiento (Calendly, GHL, etc).
 				cta.href = 'TODO_URL_AGENDAR_LLAMADA';
 				cta.textContent = 'Agenda tu llamada de claridad';
@@ -563,73 +1366,11 @@
 				if (tipoCambio && moneda !== 'USD') {
 					const fecha = new Date(tipoCambio.fetchedAt).toLocaleDateString('es-CL');
 					const fx = document.createElement('p');
-					fx.className = 'field-hint';
-					fx.style.marginTop = '16px';
-					fx.style.marginBottom = '0';
+					fx.className = 'fx-note';
 					fx.textContent = `Tipo de cambio usado: 1 USD = ${tipoCambio.rate.toFixed(2)} ${moneda} (${fecha}).`;
 					closingEl.appendChild(fx);
 				}
 			}
-
-			form.addEventListener('submit', async (event) => {
-				event.preventDefault();
-				setFormError('');
-
-				const data = new FormData(form);
-				const turnstileToken = data.get('cf-turnstile-response');
-				if (!turnstileToken) {
-					setFormError('Completa la verificacion de seguridad antes de continuar.');
-					return;
-				}
-
-				const payload = {
-					nombre: data.get('nombre'),
-					correo: data.get('correo'),
-					whatsapp: data.get('whatsapp'),
-					turnstileToken,
-					moneda: data.get('pais'),
-					negocio: {
-						currentRevenue: Number(data.get('currentRevenue')),
-						targetRevenue: Number(data.get('targetRevenue')),
-						monthlySessions: Number(data.get('monthlySessions')),
-						conversionRate: Number(data.get('conversionRate')),
-						aov: Number(data.get('aov')),
-						roas: Number(data.get('roas')),
-						cac: Number(data.get('cac')),
-						margin: Number(data.get('margin')),
-						productType: data.get('productType'),
-						emailMarketing: data.get('emailMarketing') === 'on',
-						whatsappMarketing: data.get('whatsappMarketing') === 'on',
-						repurchaseFrequency: data.get('repurchaseFrequency'),
-						returningCustomerRate: Number(data.get('returningCustomerRate')),
-						adsExperience: data.get('adsExperience'),
-					},
-				};
-
-				showState(stateLoading);
-
-				try {
-					const response = await fetch(API_URL, {
-						method: 'POST',
-						headers: { 'Content-Type': 'application/json' },
-						body: JSON.stringify(payload),
-					});
-					const result = await response.json();
-
-					if (!response.ok) {
-						showState(stateForm);
-						setFormError(result.error || 'No pudimos generar tu plan. Intenta de nuevo.');
-						return;
-					}
-
-					fbq('track', 'Lead');
-					renderReport(result.analysis, result.closing, result.moneda, result.tipoCambio);
-					showState(stateResult);
-				} catch (err) {
-					showState(stateForm);
-					setFormError('No pudimos conectar con el servidor. Revisa tu conexion e intenta de nuevo.');
-				}
-			});
 		</script>
 	</body>
 </html>
