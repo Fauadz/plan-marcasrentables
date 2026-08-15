@@ -441,8 +441,8 @@
 			// No son el mismo origen, por eso la URL completa en vez de una ruta relativa.
 			const API_URL = 'https://growth-advisor-publico.fauadzkassen.workers.dev/analizar';
 
-			// TODO: reemplazar por el Pixel ID real de Meta antes de lanzar la campana (paso 6 del brief).
-			const META_PIXEL_ID = 'TODO_META_PIXEL_ID';
+			// Mismo pixel que la landing del VSL (confirmado por Fauadz 2026-08-15), hereda historial y audiencias.
+			const META_PIXEL_ID = '1405420914933496';
 			!(function (f, b, e, v, n, t, s) {
 				if (f.fbq) return;
 				n = f.fbq = function () {
@@ -461,6 +461,8 @@
 			})(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
 			fbq('init', META_PIXEL_ID);
 			fbq('track', 'PageView');
+			// Mide cuanta gente llega a la herramienta vs. cuanta completa (Lead), para tasa de conversion.
+			fbq('track', 'ViewContent');
 
 			const REPORT_LABELS = {
 				diagnosticoGeneral: 'Diagnostico general',
