@@ -78,7 +78,7 @@
 
 			.logo-strip {
 				background: var(--ink);
-				padding: 14px 0;
+				padding: 6px 0;
 			}
 
 			.logo-strip .wrap {
@@ -177,28 +177,57 @@
 				font-weight: 900;
 				font-size: clamp(2rem, 6.5vw, 2.9rem);
 				letter-spacing: -0.01em;
-				margin-bottom: 18px;
+				margin-bottom: 12px;
 			}
 
 			.hero .lead {
 				font-size: 1.1rem;
 				font-weight: 400;
-				margin-bottom: 14px;
+				margin-bottom: 10px;
 				max-width: 56ch;
 			}
 
 			.hero .support {
 				font-size: 1.02rem;
 				font-weight: 400;
-				margin-bottom: 26px;
+				margin-bottom: 16px;
 				max-width: 56ch;
 				color: var(--muted);
+			}
+
+			@media (min-width: 900px) {
+				.hero h1 {
+					margin-bottom: 18px;
+				}
+
+				.hero .lead {
+					margin-bottom: 14px;
+				}
+
+				.hero .support {
+					margin-bottom: 26px;
+				}
 			}
 
 			.hero .cta-sub {
 				margin-top: 10px;
 				font-size: 0.85rem;
 				color: var(--muted);
+			}
+
+			.hero-mobile-image {
+				display: block;
+				width: 100%;
+				max-width: 130px;
+				margin: 2px auto 10px;
+				border-radius: 14px;
+				box-shadow: 0 16px 32px -18px rgba(22, 24, 26, 0.4);
+			}
+
+			@media (min-width: 900px) {
+				.hero-mobile-image {
+					display: none;
+				}
 			}
 
 			.hero-visual {
@@ -212,55 +241,11 @@
 				}
 			}
 
-			.preview-card {
-				background: var(--white);
-				border: 1px solid var(--border);
-				border-radius: 20px;
-				padding: 28px;
+			.hero-visual-image {
 				width: 100%;
-				max-width: 320px;
+				max-width: 380px;
+				border-radius: 20px;
 				box-shadow: 0 24px 48px -24px rgba(22, 24, 26, 0.28);
-				transform: rotate(2deg);
-			}
-
-			.preview-eyebrow {
-				font-family: var(--font);
-				font-weight: 800;
-				text-transform: uppercase;
-				letter-spacing: 0.1em;
-				color: var(--accent);
-				font-size: 0.7rem;
-				margin: 0 0 10px;
-			}
-
-			.preview-number {
-				font-weight: 900;
-				font-size: 3.4rem;
-				color: var(--ink);
-				margin: 0 0 18px;
-				line-height: 1;
-			}
-
-			.preview-line {
-				height: 10px;
-				border-radius: 6px;
-				background: var(--border);
-				margin-bottom: 10px;
-			}
-
-			.preview-line.short {
-				width: 65%;
-				margin-bottom: 20px;
-			}
-
-			.preview-chip {
-				display: inline-block;
-				background: rgba(45, 179, 176, 0.12);
-				color: var(--accent-dark);
-				font-weight: 700;
-				font-size: 0.8rem;
-				border-radius: 8px;
-				padding: 8px 12px;
 			}
 
 			/* ---------- Social proof ---------- */
@@ -766,27 +751,23 @@
 					<div class="hero-grid">
 						<div class="hero-content">
 							<h1>Tus ventas llevan meses estancadas o aún ni despegan</h1>
-							<p class="lead">
-								Quiero decirte que eso se arregla encontrando dónde está el freno. Y para eso necesitas un plan
-								específico para tu ecommerce.
-							</p>
+							<p class="lead">Descubre tu plan de acción específico para escalar tu ecommerce</p>
 							<p class="support">
 								En menos de 5 minutos vas a tener en pantalla el plan completo para triplicar tus ventas. Hecho con
 								los números reales de tu tienda, no con teoría.
 							</p>
+							<img
+								class="hero-mobile-image"
+								src="assets/portada.png"
+								alt="Vista previa de tu plan: diagnóstico, cuello de botella, camino al 3X y plan de acción"
+							/>
 							<div class="btn-center">
 								<button class="btn cta-open" type="button">Generar mi plan gratis</button>
 								<p class="cta-sub">Gratis. Sin tarjeta. Un plan por marca.</p>
 							</div>
 						</div>
 						<div class="hero-visual" aria-hidden="true">
-							<div class="preview-card">
-								<p class="preview-eyebrow">Tu escenario 3X</p>
-								<p class="preview-number">3X</p>
-								<div class="preview-line"></div>
-								<div class="preview-line short"></div>
-								<span class="preview-chip">Cuello de botella: conversión</span>
-							</div>
+							<img class="hero-visual-image" src="assets/portada.png" alt="" />
 						</div>
 					</div>
 				</div>
@@ -795,7 +776,7 @@
 			<section class="social-proof">
 				<div class="wrap">
 					<p class="eyebrow">Más de 60 marcas han crecido con este sistema</p>
-					<img src="assets/social-proof.png" alt="Cinco estrellas y logos de marcas que ya trabajaron con Loops" />
+					<img src="assets/social-proof-v2.png" alt="Cinco estrellas y logos de marcas que ya trabajaron con Loops" />
 				</div>
 			</section>
 
